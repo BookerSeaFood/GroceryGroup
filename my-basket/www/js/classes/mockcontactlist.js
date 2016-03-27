@@ -1,0 +1,1 @@
+var mb.MockContactList = function() {}
