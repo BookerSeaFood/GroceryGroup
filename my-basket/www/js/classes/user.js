@@ -4,22 +4,22 @@ var mb.User = function() {
 	this.uid = -1;
 
 	// Whether the user is currently logged in
-	this.is_logged_in = false;
+	this.isLoggedIn = false;
 
 	// Session identifier (for staring logged in across a single session)
-	this.session_id = -1;
+	this.sessionID = -1;
 
 	// Cookie identifier (for staying logged in across multiple sessions)
-	this.cookie_id = -1;
+	this.cookieID = -1;
 
 	// List of this user's contacts
-	this.contact_list = new MockContactList();
+	this.contactList = new MockContactList();
 
 	// List of all grocery lists that this user is a member of
-	this.grocery_list_list = new MockListList();
+	this.groceryListList = new MockListList();
 
 	// Information regarding this user's profile
-	this.user_profile = new MockUserProfile();
+	this.profileInfo = new MockUserProfile();
 
 	// Database connection info
 	this.db = new MockDatabase();
@@ -83,5 +83,5 @@ mb.User.logout = function() {
  * @return {string} Whatever information the profile provides from toString()
  */
 mb.User.toString = function() {
-	return this.user_profile.toString();
+	return this.profileInfo.toString();
 }
