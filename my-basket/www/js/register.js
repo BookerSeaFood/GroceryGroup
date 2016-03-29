@@ -1,3 +1,5 @@
+if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+
 /**
  * Create a new entry for the user in the users table
  * @param {string} username The user's username
@@ -28,4 +30,4 @@ mb.register = function(username, password, email, database) {
 
 	// Insert all this data into the database
 	database.insert('users', toInsert)
-}
+};

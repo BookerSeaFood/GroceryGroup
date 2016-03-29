@@ -1,1 +1,3 @@
-var mb.MockListList = function() {}
+if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+
+var mb.MockListList = function() {};

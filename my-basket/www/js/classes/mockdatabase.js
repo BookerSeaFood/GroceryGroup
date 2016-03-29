@@ -1,6 +1,8 @@
-var mb.MockDatabase = function() {}
+if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
-mb.MockDatabase.insert(table, fields) {
+mb.MockDatabase = function() {};
+
+mb.MockDatabase.prototype.insert(table, fields) {
 	/**
 
 	for (var key in validation_messages) {
@@ -18,36 +20,36 @@ mb.MockDatabase.insert(table, fields) {
 	}
 
 	*/
-}
+};
 
-mb.MockDatabase.update(table, id, fields) {
+mb.MockDatabase.prototype.update(table, id, fields) {
 	// update ID in TABLE where FIELDS[key] => FIELDS[val]
-}
+};
 
-mb.MockDatabase.delete() {
+mb.MockDatabase.prototype.delete() {
 	//
-}
+};
 
 mb.MockDatabse.get() {
 	//
-}
+};
 
-mb.MockDatabase.getById() {
+mb.MockDatabase.prototype.getById() {
+	//
+};
 
-}
-
-mb.MockDatabase.results() {
+mb.MockDatabase.prototype.results() {
 	return list();
-}
+};
 
-mb.MockDatabase.firstResult() {
+mb.MockDatabase.prototype.firstResult() {
 	return null;
-}
+};
 
-mb.MockDatabase.getErrors() {
+mb.MockDatabase.prototype.getErrors() {
 	return list();
-}
+};
 
-mb.MockDatabase.count() {
+mb.MockDatabase.prototype.count() {
 	return -1;
-}
+};

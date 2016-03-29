@@ -1,5 +1,7 @@
+if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+
 /** @constructor */
-var mb.User = function() {
+mb.User = function() {
 	// ID in the database (UUID)
 	this.uid = -1;
 
@@ -24,29 +26,29 @@ var mb.User = function() {
 	// Database connection info
 	this.db = new MockDatabase();
 
-}
+};
 
 /** TODO
  *
  */
-mb.User.create = function() {
+mb.User.prototype.create = function() {
 	// Insert this into the database
-}
+};
 
 /** TODO
  *
  */
-mb.User.update = function() {
+mb.User.prototype.update = function() {
 	// Update this entry in the database
-}
+};
 
 /**
  * Return whether the user is logged in
  * @return {boolean} Whether the user is currently logged in
  */
-mb.User.exists = function() {
+mb.User.prototype.exists = function() {
 	return this.is_logged_in;
-}
+};
 
 /**
  * Log the user in through Google, Facebook, or our system
@@ -61,7 +63,7 @@ mb.User.exists = function() {
  *     <li> 2: google
  *     <ul>
  */
-mb.User.login = function(username, password, method) {
+mb.User.prototype.login = function(username, password, method) {
 	if (method == 0){
 		// our system
 	} else if (method == 1){
@@ -69,19 +71,19 @@ mb.User.login = function(username, password, method) {
 	} else if (method == 2){
 		// google
 	}
-}
+};
 
 /** TODO
   *
  */
-mb.User.logout = function() {
+mb.User.prototype.logout = function() {
 	// End the current session
-}
+};
 
 /** TODO: fix this documentation when profile is finished
  * Return the user's profile in string form
  * @return {string} Whatever information the profile provides from toString()
  */
-mb.User.toString = function() {
+mb.User.prototype.toString = function() {
 	return this.profileInfo.toString();
-}
+};
