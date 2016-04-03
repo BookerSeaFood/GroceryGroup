@@ -2,24 +2,24 @@ if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
 mb.MockDatabase = function() {};
 
+/* Send requests to the server */
+
+/*
+
+return $.ajax({
+	   type: "GET",
+	   url: url,
+	   timeout: 60 * 1000
+   }).done(function (data) {
+	   alert('hey');
+   }).fail(function (a, b, c) {
+	   console.log(b + '|' + c);
+   });
+
+*/
+
 mb.MockDatabase.prototype.insert(table, fields) {
-	/**
-
-	for (var key in validation_messages) {
-	    // skip loop if the property is from prototype
-	    if (!validation_messages.hasOwnProperty(key)) continue;
-
-	    var obj = validation_messages[key];
-	    for (var prop in obj) {
-	        // skip loop if the property is from prototype
-	        if(!obj.hasOwnProperty(prop)) continue;
-
-	        // your code
-	        alert(prop + " = " + obj[prop]);
-	    }
-	}
-
-	*/
+	//
 };
 
 mb.MockDatabase.prototype.update(table, id, fields) {

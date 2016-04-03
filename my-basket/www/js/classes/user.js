@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
+mb.SERVER = '127.0.0.1/my-basket/'; // TODO: get a server
+
 /** @constructor */
 mb.User = function() {
 	// ID in the database (UUID)
@@ -39,7 +41,8 @@ mb.User.prototype.create = function() {
  *
  */
 mb.User.prototype.update = function() {
-	// Update this entry in the database
+	// Update this entry from the database
+
 };
 
 /**
