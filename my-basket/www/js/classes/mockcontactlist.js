@@ -1,3 +1,17 @@
 if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
-var mb.MockContactList = function() {};
+mb.MockContactList = function() {
+	this.contacts = [];
+};
+
+mb.MockContactList.prototype.load = function(listName) {
+	this.items.push(new Contact());
+};
+
+mb.MockContactList.prototype.get = function(i) {
+	return this.items[i];
+};
+
+mb.MockContactList.prototype.len = function() {
+	return this.items.length;
+};

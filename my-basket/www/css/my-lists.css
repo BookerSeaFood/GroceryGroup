@@ -1,0 +1,30 @@
+.listTitle {
+	text-align: center;
+	background-color: #eee;
+	width: 90%;
+}
+
+.list {
+	background-color: #333;
+	width: 100%;
+	display: inline-block;
+}
+
+.listItem {
+	width: 90%;
+
+	margin: 0 auto;
+	display: block;
+}
+
+.listItem a {
+	margin-left: 2%;
+}
+
+.oddListItem {
+	background-color: #eee;
+}
+
+.evenListItem {
+	background-color: #bbb;
+}
