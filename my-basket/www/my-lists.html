@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+		<link rel="stylesheet" href="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.css">
+		<link rel="stylesheet" href="css/index.css">
+		<script src="js/lib/jQuery/jquery-1.12.2.min.js"></script>
+		<script src="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+        <title>myBasket</title>
+
+		<script>
+			if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+			if (mb.glob == null || typeof(mb.glob) != "object") { mb.glob = new Object(); }
+
+			// Need to implementa a lot here
+			var mb.glob.selectedList = "";
+
+			$(document).bind("mobileinit",function() {
+				$.mobile.changePage.defaults.changeHash = false;
+				$.mobile.hashListeningEnabled = false;
+				$.mobile.pushStateEnabled = false;
+			});
+
+			var mb.glob.curList = new mb.GroceryList();
+			mb.glob.curList.load(mb.glob.selectedList);
+		</script>
+    </head>
+    <body>
+        <div class="app">
+            <h1>Grocery Group</h1>
+            <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+			// Still need a lot to be implemented for this to work, but this is
+			//  the basic idea
+
+			// Show the list items
+			var odd = true;
+			for (var i = 1; i < mb.glob.curList.len(); i++){
+				// Alternate white and grey
+				odd = !odd;
+
+				var bgClass = 'oddListItem';
+				if (!odd) {
+					bgClass = 'evenListItem';
+				}
+
+				$('.list').append('<div class="listItem ' + bgClass + '">' +
+						mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
+			}
+        </script>
+    </body>
+</html>
