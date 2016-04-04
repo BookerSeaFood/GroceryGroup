@@ -12,11 +12,11 @@
 
 		<link rel="stylesheet" type="text/css" href="css/index.css" />
 		<link rel="stylesheet" href="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.css">
-		<link rel="stylesheet" href="css/index.css">
+		<link rel="stylesheet" href="css/my-lists.css">
 
 		<script src="js/lib/jQuery/jquery-1.12.2.min.js"></script>
 		<script src="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
-		<script src = "js/classes/mockgrocerylist.js"></script>
+		<script src="js/classes/mockgrocerylist.js"></script>
 
 		<script>
 			if (mb == null || typeof(mb) != "object"){
@@ -28,7 +28,7 @@
 			}
 
 			// Need to implement a lot here
-			mb.glob.selectedList = "";
+			mb.glob.selectedList = "Mock List";
 
 			$(document).bind("mobileinit",function() {
 				$.mobile.changePage.defaults.changeHash = false;
@@ -41,29 +41,33 @@
 		</script>
     </head>
     <body>
-        <div class="list">
+		<div class="listTitle">
 			<!-- -->
-        </div>
-
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript">
-			// Still need a lot to be implemented for this to work, but this is
-			//  the basic idea
-
-			// Show the list items
-			var odd = true;
-			for (var i = 0; i < mb.glob.curList.len(); i++){
-				// Alternate white and grey
-				odd = !odd;
-
-				var bgClass = 'oddListItem';
-				if (!odd) {
-					bgClass = 'evenListItem';
-				}
-
-				$('.list').append('<div class="listItem ' + bgClass + '">' +
-						mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
-			}
-        </script>
+		</div>
+	    <div class="list">
+			<!-- -->
+	    </div>
     </body>
+	<script type="text/javascript" src="cordova.js"></script>
+	<script type="text/javascript">
+		// Still need a lot to be implemented for this to work, but this is
+		//  the basic idea
+
+		// Show the list items
+		var odd = true;
+		for (var i = 0; i < mb.glob.curList.len(); i++){
+			// Alternate white and grey
+			odd = !odd;
+
+			var bgClass = 'oddListItem';
+			if (!odd) {
+				bgClass = 'evenListItem';
+			}
+
+			$('.list').append('<div class="listItem ' + bgClass + '">' +
+					mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
+		}
+
+		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+	</script>
 </html>
