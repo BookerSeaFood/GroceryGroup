@@ -24,7 +24,7 @@ mb.removeContact = function(firstUser, username, database) {
 	
 	//Look for given contact
 	for(i = 0; i < firstUser.contactList.length; ++i) {
-		if (username == firstUser.contactList[i].profileInfo.getName()) {
+		if (username === firstUser.contactList[i].profileInfo.getName()) {
 			//Remove if found
 			delete firstUser.contactList[i];
 			database.update();

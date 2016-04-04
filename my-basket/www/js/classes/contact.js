@@ -2,7 +2,7 @@ if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
 mb.SERVER = '127.0.0.1/my-basket/';
 
-/**@constructor*/
+/** @constructor */
 mb.Contact = function() {
 	//Database ID
 	this.uid = -1;
@@ -10,6 +10,8 @@ mb.Contact = function() {
 	//Profile of the contact
 	this.profileInfo = new MockUserProfile();
 
+	//Username of the contact
+	this.username = 'Peter Placeholder';
 	//Database connection
 	this.db = new MockDatabase();
 };
@@ -20,7 +22,7 @@ mb.Contact.prototype.create = function() {
 	//
 };
 
-//TODO: implement in case of user name change
+//TODO: implement in case of username change
 mb.Contact.prototype.update = function() {
 	//
 };
