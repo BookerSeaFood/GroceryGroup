@@ -47,27 +47,40 @@
 	    <div class="list">
 			<!-- -->
 	    </div>
+		<div class="button">
+			<!-- -->
+			<button name="add" id="add" class="addButton">Add an Item</button>
+		</div>
     </body>
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
 		// Still need a lot to be implemented for this to work, but this is
 		//  the basic idea
 
-		// Show the list items
-		var odd = true;
-		for (var i = 0; i < mb.glob.curList.len(); i++){
-			// Alternate white and grey
-			odd = !odd;
+		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+
+		function update(isOdd, num) {
 
 			var bgClass = 'oddListItem';
-			if (!odd) {
+			if (!isOdd) {
 				bgClass = 'evenListItem';
 			}
 
 			$('.list').append('<div class="listItem ' + bgClass + '">' +
 					mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
+
+			isOdd = !isOdd;
 		}
 
-		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+		// Show the list items
+		var odd = true;
+		for (var i = 0; i < mb.glob.curList.len(); i++){
+			// Alternate white and grey
+			update(odd, i);
+		}
+
+		// TODO: make this bring up item addition page
+		var that = mb.glob.curList;
+		$('.addButton').click(mb.glob.curList.addItem(that));
 	</script>
 </html>
