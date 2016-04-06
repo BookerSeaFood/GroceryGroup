@@ -80,6 +80,7 @@
 		}
 
 		// TODO: make this bring up item addition page
-		$('.addButton').click(mb.glob.curList.addItem);
+		var that = mb.glob.curList;
+		$('.addButton').click(mb.glob.curList.addItem(that));
 	</script>
 </html>

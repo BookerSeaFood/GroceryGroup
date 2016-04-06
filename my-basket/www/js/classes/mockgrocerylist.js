@@ -30,8 +30,6 @@ mb.MockGroceryList.prototype.len = function() {
 	return this.items.length;
 };
 
-mb.MockGroceryList.prototype.addItem = function() {
-	this.items.push(new mb.MockGroceryListItem());
-	//alert(this.items);
-	alert("hi");
+mb.MockGroceryList.prototype.addItem = function(that) {
+	that.items.push(new mb.MockGroceryListItem());
 };
