@@ -16,10 +16,10 @@ mb.MockGroceryList = function() {
 
 mb.MockGroceryList.prototype.load = function(listName) {
 	//Will eventually ping the server for shared lists / local storage for singles
-	this.items.push(new mb.MockGroceryListItem);
-	this.items.push(new mb.MockGroceryListItem);
-	this.items.push(new mb.MockGroceryListItem);
-	this.items.push(new mb.MockGroceryListItem);
+	this.items.push(new mb.MockGroceryListItem());
+	this.items.push(new mb.MockGroceryListItem());
+	this.items.push(new mb.MockGroceryListItem());
+	this.items.push(new mb.MockGroceryListItem());
 };
 
 mb.MockGroceryList.prototype.get = function(i) {
@@ -28,4 +28,10 @@ mb.MockGroceryList.prototype.get = function(i) {
 
 mb.MockGroceryList.prototype.len = function() {
 	return this.items.length;
+};
+
+mb.MockGroceryList.prototype.addItem = function() {
+	this.items.push(new mb.MockGroceryListItem());
+	//alert(this.items);
+	alert("hi");
 };
