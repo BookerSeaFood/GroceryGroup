@@ -1,22 +1,16 @@
 if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
-/* @constructor */
+/** @constructor */
 mb.Database = function(jq, server) {
 	this.jq = jq;
 	this.serv_url = server;
 	this.timeout = 60000;
 };
 
-
-/**
- * Attempt to insert data into the database
- * @param {string} table Which SQL table to insert the data into
- * @param {object} fields What data to send through the POST request
- */
-mb.Database.prototype.insert(table, fields) {
+mb.Database.prototype.query = function(type, table, fields) {
 	var settings = new Object();
 	settings.type = 'POST';
-	settings.url = this.serv_url + 'insert.php';
+	settings.url = this.serv_url + type + table + '.php';
 	settings.timeout = this.timeout;
 	settings.table = fields;
 
@@ -30,34 +24,34 @@ mb.Database.prototype.insert(table, fields) {
 	});
 };
 
-mb.Database.prototype.update(table, id, fields) {
-	// update ID in TABLE where FIELDS[key] => FIELDS[val]
+/**
+ * Attempt to insert data into the database
+ * @param {string} table Which SQL table to insert the data into (use singular
+ *            form e.g. "user" not "users")
+ * @param {object} fields What data to send through the POST request
+ */
+ mb.Database.prototype.add = function(table, fields) {
+	 this.query('add-', table, fields);
+ };
+
+ /**
+  * Attempt to edit data in the databse
+  * @param {string} table Which SQL table to edit the data in (use singular
+  *            form e.g. "user" not "users")
+  * @param {object} fields What data to send through the POST request
+  */
+mb.Database.prototype.edit = function(table, fields) {
+	this.query('edit-', table, fields);
 };
 
-mb.Database.prototype.delete() {
-	//
-};
-
-mb.MockDatabse.get() {
-	//
-};
-
-mb.Database.prototype.getById() {
-	//
-};
-
-mb.Database.prototype.results() {
-	return list();
-};
-
-mb.Database.prototype.firstResult() {
-	return null;
-};
-
-mb.Database.prototype.getErrors() {
-	return list();
-};
-
-mb.Database.prototype.count() {
-	return -1;
+/**
+ * Attempt to remove an item (row) from the database
+ * @param {string} table Which SQL table to remove the row from (use singular
+ *            form e.g. "user" not "users")
+ * @param {number} id Id of the item to be removed
+ */
+mb.Database.prototype.remove = function(table, id) {
+	var fields = new Object();
+	fields.id = id;
+	this.query('remove-', table, fields);
 };
