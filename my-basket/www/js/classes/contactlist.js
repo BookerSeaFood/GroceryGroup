@@ -28,11 +28,11 @@ mb.ContactList.prototype.displayContacts = function() {
 };
 
 //Functions to output Contact info of a specific contact and ContactList length
-mb.ContactList.prototype.getName() = function(i) {
+mb.ContactList.prototype.getName = function(i) {
 	return this.contacts[i].getUsername();
 };
 
-mb.ContactList.prototype.getUID() = function(i) {
+mb.ContactList.prototype.getUID = function(i) {
 	return this.contacts[i].getUID();
 };
 

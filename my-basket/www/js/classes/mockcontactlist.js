@@ -1,5 +1,10 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+mb.MockContact = function(con) {
+	this.username = con.username;
+	this.uid = con.uid;
+};
+
 mb.listItemToHtml = function(that) {
 	return '<a href="#">' + this.username + ' x' +  '</a>';
 };
@@ -13,7 +18,7 @@ mb.MockContactList.prototype.addItem = function(con) {
 	return (this.contacts.length - 1);
 };
 
-// Search for and remove a ListItem by name
+// Search for and remove a Contact by name
 mb.MockContactList.prototype.removeItem = function(contactName) {
 	for (i=0; i < this.contacts.length; i++) {
 	  	if (this.contacts[i].getName() === contactName) {
@@ -26,26 +31,35 @@ mb.MockContactList.prototype.removeItem = function(contactName) {
 
 mb.MockContactList.prototype.load = function(listName) {
 	//Will eventually ping the server for shared lists / local storage for singles
-	this.contacts.push(new Contact('Julius',5));
-	this.contacts.push(new Contact('Julius',5));
-	this.contacts.push(new Contact('Julius',5));
-	this.contacts.push(new Contact('Julius',5));
+	
+	var tobj = new Object();
+	tobj.username = 'Julius';
+	tobj.uid = 5;
+
+	this.contacts.push(new mb.MockContact(tobj));
+	this.contacts.push(new mb.MockContact(tobj));
+	this.contacts.push(new mb.MockContact(tobj));
+	this.contacts.push(new mb.MockContact(tobj));
 };
 
 mb.MockContactList.prototype.displayContacts = function() {
 	for (i=0; i < this.contacts.length; i++) {
-	  	alert('Username= ' + this.contacts[i].getName());
+	  	alert('Username= ' + this.contacts[i].username);
 	}
 };
 
-mb.MockContactList.prototype.getName() = function(i) {
+mb.MockContactList.prototype.getName = function(i) {
 	return this.items[i].getUsername();
 };
 
-mb.MockContactList.prototype.getUID() = function(i) {
+mb.MockContactList.prototype.getUID = function(i) {
 	return this.items[i].getUID();
 };
 
 mb.MockContactList.prototype.len = function() {
 	return this.items.length;
 };
+
+var hi = new mb.MockContactList();
+hi.load("hi");
+hi.displayContacts();
