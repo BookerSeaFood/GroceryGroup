@@ -40,50 +40,40 @@
 			mb.glob.curList.load(mb.glob.selectedList);
 		</script>
     </head>
-    
-    /**View List 
-     *display list name
-     *display items in list
-     *option to add item and reroute to add item page   
-     */
+
+<!--
+View List
+	*display list name
+	*display items in list
+	*option to add item and reroute to add item page
+ -->
     <body>
         <div data-role="page" id="listPage">
             <div data-role="header">
-                <h1>mb.glob.curList.getName()</h1>
-
+				<a href="#addItemPage">Link</a>
             </div>
+			<div class="listTitle">
+				<!-- -->
+			</div>
+		    <div class="list">
+				<!-- -->
+		    </div>
+			<div class="button">
+				<!-- -->
+				<button name="add" id="add" class="addButton">Add an Item</button>
+			</div>
+        </div>
 
+		<!--
+		Add item Page:
+			*enter name and number for item and adds item to list
+			*return to view list page
+		-->
+		<div data-role="page" id="addItemPage">
+			<a href="#listPage">Link</a>
 
         </div>
     </body>
-
-    /**
-     *Add item Page:
-     *enter name and number for item and adds item to list
-     *return to view list page
-     */
-    <body>
-        <div data-role="page" id="addItemPage">
-
-        </div>
-    </body>
-    
-  
-
-    <body>
-		<div class="listTitle">
-			<!-- -->
-		</div>
-	    <div class="list">
-			<!-- -->
-	    </div>
-		<div class="button">
-			<!-- -->
-			<button name="add" id="add" class="addButton">Add an Item</button>
-		</div>
-    </body>
-
-
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
 		// Still need a lot to be implemented for this to work, but this is
