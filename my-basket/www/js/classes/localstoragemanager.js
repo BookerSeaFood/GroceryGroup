@@ -26,21 +26,7 @@ mb.LocalStorageManager = function() {
 	this.userIdKey = "userId";
 	this.listKey = "list";
 
-	var supported = this.localStorageSupported();
-	this.storage = supported ? window.localStorage : window.fakeStorage;
-};
-
-mb.LocalStorageManager.prototype.localStorageSupported = function() {
-	var testKey = "test";
-	var storage = window.localStorage;
-
-	try {
-		storage.setItem(testKey, "1");
-		storage.removeItem(testKey);
-		return true;
-	} catch (error) {
-		return false;
-	}
+	this.storage = new FakeStorage;
 };
 
 // Best score getters/setters
