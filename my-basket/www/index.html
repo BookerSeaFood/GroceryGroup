@@ -58,10 +58,6 @@ View List
 		    <div class="list">
 				<!-- -->
 		    </div>
-			<div class="button">
-				<!-- -->
-				<button name="add" id="add" class="addButton">Add an Item</button>
-			</div>
         </div>
 
 		<!--
@@ -86,30 +82,23 @@ View List
 
 		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
 
-		function update(isOdd, num) {
+		function update(num) {
 
 			var bgClass = 'oddListItem';
-			if (!isOdd) {
+			if (!mb.odd) {
 				bgClass = 'evenListItem';
 			}
 
 			$('.list').append('<div class="listItem ' + bgClass + '">' +
 					mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
 
-			isOdd = !isOdd;
+			mb.odd = !mb.odd;
 		}
 
 		// Show the list items
-		var odd = true;
+		mb.odd = false;
 		for (var i = 0; i < mb.glob.curList.len(); i++){
-		    // Alternate white and grey
-
-
-			update(odd, i);
+			update(i);
 		}
-
-		// TODO: make this bring up item addition page
-		//var that = mb.glob.curList;
-		//$('.addButton').click(mb.glob.curList.addItem(that));
 	</script>
 </html>
