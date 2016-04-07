@@ -27,13 +27,13 @@ mb.ContactList.prototype.displayContacts = function() {
 };
 
 mb.ContactList.prototype.getName() = function(i) {
-	return this.items[i].getUsername();
+	return this.contacts[i].getUsername();
 };
 
 mb.ContactList.prototype.getUID() = function(i) {
-	return this.items[i].getUID();
+	return this.contacts[i].getUID();
 };
 
 mb.ContactList.prototype.len = function() {
-	return this.items.length;
+	return this.contacts.length;
 };

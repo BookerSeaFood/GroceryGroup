@@ -38,7 +38,8 @@ mb.LocalStorageManager.prototype.localStorageSupported = function () {
     storage.setItem(testKey, "1");
     storage.removeItem(testKey);
     return true;
-  } catch (error) {
+  } 
+  catch (error) {
     return false;
   }
 };

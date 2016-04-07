@@ -4,7 +4,7 @@ if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
   * Get the user's profile info from the db and create a contact
   * @param {string} username The user's username
   * @param {number} uuid The user's UUID
-  * @throws {ContactAlreadyExistsException} If the contact already exists on either user's contact list,
+  * @throws {Error} error If the contact already exists on either user's contact list,
   * 	throws this exception
   */
 mb.addContact = function(firstUser, username, database) {
@@ -18,8 +18,14 @@ mb.addContact = function(firstUser, username, database) {
 	uuid = secondUser.uid;
 	//Add to 1st user's contact list
 	var newCon = new Contact(username, uuid);
-	firstUser.contactList.addItem(newCon);
-	database.update()
+	try {
+		firstUser.contactList.addItem(newCon);
+		newCon.create();
+		return true;
+	}
+	catch(error) {
+		return false;
+	}
 };
 
 mb.removeContact = function(firstUser, username, database) {

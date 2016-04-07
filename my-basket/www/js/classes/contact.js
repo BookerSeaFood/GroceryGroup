@@ -9,20 +9,12 @@ mb.Contact = function(un, id) {
 	
 	//Username of the contact
 	this.username = un || 'Peter Placeholder';
-	
-	//Database connection
-	this.db = new MockDatabase();
 };
 
 
 //TODO: implement create function for inserting into ContactLists
 mb.Contact.prototype.create = function() {
-	
-};
-
-//TODO: implement in case of username change
-mb.Contact.prototype.update = function() {
-	
+	DatabaseInterface.add('contacts', this.uid);
 };
 
 mb.Contact.prototype.getUsername = function() {
