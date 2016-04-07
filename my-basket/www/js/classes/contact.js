@@ -25,7 +25,11 @@ mb.Contact.prototype.update = function() {
 	
 };
 
-mb.Contact.prototype.toString = function() {
-	return this.username.toString();
+mb.Contact.prototype.getUsername = function() {
+	return this.username;
+};
+
+mb.Contact.prototype.getUID = function() {
+	return this.uid;
 };
 
