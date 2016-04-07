@@ -7,6 +7,12 @@ mb.DatabaseInterface = function(jq, server) {
 	this.timeout = 60000;
 };
 
+/**
+ * Send a POST request to the server
+ * @param {string} type Which action to perform (add, edit, or remove)
+ * @param {string} table What table to query
+ * @param {object} fields What data to be passed in the POST request
+ */
 mb.DatabaseInterface.prototype.query = function(type, table, fields) {
 	var settings = new Object();
 	settings.type = 'POST';
