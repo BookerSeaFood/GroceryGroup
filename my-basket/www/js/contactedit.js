@@ -9,27 +9,28 @@ if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
   */
 mb.addContact = function(firstUser, username, database) {
 	//Validate input data
-	
+	if (typeof username !== 'string' || typeof firstUser !== 'object' || typeof database !== 'object') {
+		return 0;
+	}
 	//Get other user's profile data
 	var secondUser = database.get(username);
-	//TODO: possibly add a getProfileData User function
-	secondUserProfileData = secondUser.toString();
+	//TODO: possibly add a getUsername/getUUID User function
+	uuid = secondUser.uid;
 	//Add to 1st user's contact list
-	firstUser.contactList.add(secondUserProfileData);
+	var newCon = new Contact(username, uuid);
+	firstUser.contactList.addItem(newCon);
 	database.update()
 };
 
 mb.removeContact = function(firstUser, username, database) {
 	//Validate input data
-	
-	//Look for given contact
-	for(i = 0; i < firstUser.contactList.length; ++i) {
-		if (username === firstUser.contactList[i].profileInfo.getName()) {
-			//Remove if found
-			delete firstUser.contactList[i];
-			database.update();
-			return 1;
-		}
+	if (typeof username !== 'string' || typeof firstUser !== 'object' || typeof database !== 'object') {
+		return 0;
 	}
-	return 0;
+	//Attempt to remove given contact
+	var err = firstUser.contactList.removeItem(username);
+	if (err === 0) {
+		return 0;
+	}
+	return 1;
 }
