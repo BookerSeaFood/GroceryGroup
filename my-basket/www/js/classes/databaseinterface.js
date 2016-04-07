@@ -1,13 +1,13 @@
 if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
 /** @constructor */
-mb.Database = function(jq, server) {
+mb.DatabaseInterface = function(jq, server) {
 	this.jq = jq;
 	this.serv_url = server;
 	this.timeout = 60000;
 };
 
-mb.Database.prototype.query = function(type, table, fields) {
+mb.DatabaseInterface.prototype.query = function(type, table, fields) {
 	var settings = new Object();
 	settings.type = 'POST';
 	settings.url = this.serv_url + type + table + '.php';
@@ -30,7 +30,7 @@ mb.Database.prototype.query = function(type, table, fields) {
  *            form e.g. "user" not "users")
  * @param {object} fields What data to send through the POST request
  */
- mb.Database.prototype.add = function(table, fields) {
+ mb.DatabaseInterface.prototype.add = function(table, fields) {
 	 this.query('add-', table, fields);
  };
 
@@ -40,7 +40,7 @@ mb.Database.prototype.query = function(type, table, fields) {
   *            form e.g. "user" not "users")
   * @param {object} fields What data to send through the POST request
   */
-mb.Database.prototype.edit = function(table, fields) {
+mb.DatabaseInterface.prototype.edit = function(table, fields) {
 	this.query('edit-', table, fields);
 };
 
@@ -50,7 +50,7 @@ mb.Database.prototype.edit = function(table, fields) {
  *            form e.g. "user" not "users")
  * @param {number} id Id of the item to be removed
  */
-mb.Database.prototype.remove = function(table, id) {
+mb.DatabaseInterface.prototype.remove = function(table, id) {
 	var fields = new Object();
 	fields.id = id;
 	this.query('remove-', table, fields);
