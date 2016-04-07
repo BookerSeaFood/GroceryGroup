@@ -1,4 +1,4 @@
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 /**
   * Get the user's profile info from the db and create a contact

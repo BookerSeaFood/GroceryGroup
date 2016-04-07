@@ -1,4 +1,4 @@
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 /**
  * Create a new entry for the user in the users table

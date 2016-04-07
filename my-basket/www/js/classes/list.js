@@ -2,7 +2,7 @@
  * 
  */
 
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 /**
  * Class to represent static attributes of an Item
@@ -137,6 +137,10 @@ mb.List.prototype.removeItem = function(itemName) {
 	    }
 	}
   	return 0;
+};
+
+mb.MList.prototype.get = function(i) {
+	return this.content[i];
 };
 
 /**
