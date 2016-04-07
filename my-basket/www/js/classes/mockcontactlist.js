@@ -6,16 +6,15 @@ mb.MockContact = function(con) {
 };
 
 mb.listItemToHtml = function(that) {
-	return '<a href="#">' + this.username + ' x' +  '</a>';
+	return '<a href="#">' + 'UN: ' + that.username + ' UID: ' + that.uid.toString() +  '</a>';
 };
 
 mb.MockContactList = function() {
 	this.contacts = [];
 };
 
-mb.MockContactList.prototype.addItem = function(con) {
-	this.contacts.push(con);
-	return (this.contacts.length - 1);
+mb.MockContactList.prototype.addItem = function(that, con) {
+	that.contacts.push(new mb.MockContact(con));
 };
 
 // Search for and remove a Contact by name
@@ -48,14 +47,18 @@ mb.MockContactList.prototype.displayContacts = function() {
 	}
 };
 
+mb.MockContactList.prototype.get = function(i) {
+	return this.contacts[i];
+};
+
 mb.MockContactList.prototype.getName = function(i) {
-	return this.items[i].getUsername();
+	return this.contacts[i].getUsername();
 };
 
 mb.MockContactList.prototype.getUID = function(i) {
-	return this.items[i].getUID();
+	return this.contacts[i].getUID();
 };
 
 mb.MockContactList.prototype.len = function() {
-	return this.items.length;
+	return this.contacts.length;
 };
