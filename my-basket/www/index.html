@@ -66,18 +66,18 @@ View List
 		<div data-role="page" id="addItemPage">
             <div data-role="header">
                 <h2>Add Item</h2>
-			<a href="#listPage" data-icon="delete">Cancel</a>
+			<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 
             </div>
             <div style="padding16px;">
-                Item : <input type="textbox" value="item name" /></input>
+                Item : <input class="nameInput" type="textbox" value="" placeholder="Item Name"/></input>
             </div>
 
             <div style="padding16px;">
-                Quantity : <input type="textbox" value="item amount" /></input>
+                Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
             </div>
 
-            <button id="Enter">Enter Item</button>
+            <a  href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
 
         </div>
     </body>
@@ -106,5 +106,29 @@ View List
 		for (var i = 0; i < mb.glob.curList.len(); i++){
 			update(i);
 		}
+
+		function addItem() {
+			var item = new Object();
+			item.name = $('.nameInput').val();
+			item.ct = $('.ctInput').val();
+
+			if (!item.name || !item.ct){
+				return;
+			}
+
+			var i = mb.glob.curList.len();
+			mb.glob.curList.addItem(mb.glob.curList, item);
+			update(i);
+		}
+
+		$('.enterItem').click(addItem);
+
+		function clearInput() {
+			$('.nameInput').val('');
+			$('.ctInput').val('');
+		}
+
+		$('.cancelItem').click(clearInput);
+
 	</script>
 </html>

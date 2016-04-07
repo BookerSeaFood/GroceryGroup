@@ -1,7 +1,7 @@
 .listTitle {
 	text-align: center;
 	background-color: #eee;
-	width: 90%;
+	font-size: 2em;
 }
 
 .list {
@@ -11,14 +11,13 @@
 }
 
 .listItem {
-	width: 90%;
-
 	margin: 0 auto;
 	display: block;
 }
 
-.listItem a {
-	margin-left: 2%;
+.listItem {
+	text-align:center;
+	font-size: 1.75em;
 }
 
 .oddListItem {
@@ -27,4 +26,9 @@
 
 .evenListItem {
 	background-color: #bbb;
+}
+
+a:link {
+	color: #111;
+	text-decoration: none;
 }
