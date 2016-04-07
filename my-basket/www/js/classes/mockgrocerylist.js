@@ -3,10 +3,11 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 mb.MockGroceryListItem = function(item) {
 	this.name = item.name;
 	this.ct = item.ct;
+	this.id = item.id;
 };
 
 mb.listItemToHtml = function(that) {
-	return '<a href="#">' + that.name + ' x' + that.ct.toString() + '</a>';
+	return '<a class="item' + that.id.toString() + '" href="#editItemPage">' + that.name + ' x' + that.ct.toString() + '</a>';
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -20,22 +21,27 @@ mb.MockGroceryList.prototype.load = function(listName) {
 	var tobj = new Object();
 	tobj.name = '2% fat milk';
 	tobj.ct = 1;
+	tobj.id = 0;
 
 	var tobj2 = new Object();
-	tobj2.name = 'ricotta cheese';
+	tobj2.name = 'Ricotta cheese';
 	tobj2.ct = 3;
+	tobj2.id = 1;
 
 	var tobj3 = new Object();
-	tobj3.name = 'pasta sauce';
+	tobj3.name = 'Pasta sauce';
 	tobj3.ct = 2;
+	tobj3.id = 2;
 
 	var tobj4 = new Object();
-	tobj4.name = 'box o\' pasta';
+	tobj4.name = 'Box o\' pasta';
 	tobj4.ct = 8;
+	tobj4.id = 3;
 
 	var tobj5 = new Object();
-	tobj5.name = 'orange crush';
+	tobj5.name = 'Orange crush';
 	tobj5.ct = 1;
+	tobj5.id = 4;
 
 	this.items.push(new mb.MockGroceryListItem(tobj));
 	this.items.push(new mb.MockGroceryListItem(tobj2));
@@ -47,6 +53,13 @@ mb.MockGroceryList.prototype.load = function(listName) {
 mb.MockGroceryList.prototype.get = function(i) {
 	return this.items[i];
 };
+
+mb.MockGroceryList.prototype.edit = function(that, i, item){
+	that.items[i].name = item.name;
+	that.items[i].ct = item.ct;
+
+	alert('here');
+}
 
 mb.MockGroceryList.prototype.len = function() {
 	return this.items.length;
