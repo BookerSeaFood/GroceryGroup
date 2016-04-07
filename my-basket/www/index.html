@@ -66,7 +66,7 @@ View List
 		<div data-role="page" id="addItemPage">
             <div data-role="header">
                 <h2>Add Item</h2>
-			<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 
             </div>
             <div style="padding16px;">
@@ -80,6 +80,22 @@ View List
             <a  href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
 
         </div>
+
+		<div data-role="page" id="editItemPage">
+			<div data-role="header">
+				<h2>Edit Item</h2>
+				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+			</div>
+			<div style="padding16px;">
+                Item : <input class="editItemName" type="textbox" value="" placeholder="Item Name"/></input>
+            </div>
+
+            <div style="padding16px;">
+                Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
+            </div>
+
+            <a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
+		</div>
     </body>
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
@@ -88,36 +104,48 @@ View List
 
 		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
 
-		function update(num) {
-			var bgClass = 'oddListItem';
-			if (!mb.odd) {
-				bgClass = 'evenListItem';
-			}
-
-			$('.list').append('<div class="listItem ' + bgClass + '">' +
-					mb.listItemToHtml(mb.glob.curList.get(num)) + '</div>');
-
-			mb.odd = !mb.odd;
-		}
-
 		// Show the list items
 		mb.odd = false;
-		for (var i = 0; i < mb.glob.curList.len(); i++){
-			update(i);
+
+		function update() {
+			mb.odd = false
+
+			$('.list').empty();
+
+			for (var i = 0; i < mb.glob.curList.len(); i++){
+				var bgClass = 'oddListItem';
+				if (!mb.odd) {
+					bgClass = 'evenListItem';
+				}
+
+				var item = mb.glob.curList.get(i);
+				var el = $('<div class="listItem ' + bgClass + '" id="' + item.id + '">' + mb.listItemToHtml(item) + '</div>');
+				$('.list').append(el);
+
+				$(el).click(function(){
+					mb.curItemId = this.id.toString();
+					setupEditItem()
+				})
+
+				mb.odd = !mb.odd;
+			}
 		}
+
+		update();
 
 		function addItem() {
 			var item = new Object();
 			item.name = $('.nameInput').val();
 			item.ct = $('.ctInput').val();
+			item.id = mb.glob.curList.len()
 
 			if (!item.name || !item.ct){
 				return;
 			}
 
 			mb.glob.curList.addItem(mb.glob.curList, item);
-			update(mb.glob.curList.len() -1);
 
+			update();
 			clearInput();
 		}
 
@@ -126,9 +154,30 @@ View List
 		function clearInput() {
 			$('.nameInput').val('');
 			$('.ctInput').val('');
+			$('.editItemName').val('');
+			$('.editItemCt').val('');
 		}
 
 		$('.cancelItem').click(clearInput);
+
+		function setupEditItem() {
+			var item = mb.glob.curList.get(mb.curItemId);
+			$('.editItemName').val(item.name);
+			$('.editItemCt').val(item.ct);
+		}
+
+		function doEditItem() {
+			var item = new Object();
+			item.name = $('.editItemName').val();
+			item.ct = $('.editItemCt').val();
+
+			mb.glob.curList.edit(mb.glob.curList, mb.curItemId, item);
+
+			clearInput();
+			update();
+		}
+
+		$('.submitEdit').click(doEditItem);
 
 	</script>
 </html>
