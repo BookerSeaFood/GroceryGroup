@@ -50,7 +50,8 @@ View List
     <body>
         <div data-role="page" id="listPage">
             <div data-role="header">
-				<a href="#addItemPage">Link</a>
+				<a href="#addItemPage" data-icon="plus">Add Item</a>
+                <h2>MockListTitle</h2>
             </div>
 			<div class="listTitle">
 				<!-- -->
@@ -68,9 +69,14 @@ View List
 		Add item Page:
 			*enter name and number for item and adds item to list
 			*return to view list page
+            *select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
-			<a href="#listPage">Link</a>
+            <div data-role="header">
+                <h2>Add Item</h2>
+			<a href="#listPage" data-icon="delete">Cancel</a>
+            
+            </div>
 
         </div>
     </body>
@@ -97,12 +103,14 @@ View List
 		// Show the list items
 		var odd = true;
 		for (var i = 0; i < mb.glob.curList.len(); i++){
-			// Alternate white and grey
+		    // Alternate white and grey
+
+
 			update(odd, i);
 		}
 
 		// TODO: make this bring up item addition page
-		var that = mb.glob.curList;
-		$('.addButton').click(mb.glob.curList.addItem(that));
+		//var that = mb.glob.curList;
+		//$('.addButton').click(mb.glob.curList.addItem(that));
 	</script>
 </html>
