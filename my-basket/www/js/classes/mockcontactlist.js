@@ -59,7 +59,3 @@ mb.MockContactList.prototype.getUID = function(i) {
 mb.MockContactList.prototype.len = function() {
 	return this.items.length;
 };
-
-var hi = new mb.MockContactList();
-hi.load("hi");
-hi.displayContacts();
