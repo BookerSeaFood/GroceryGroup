@@ -12,11 +12,12 @@ mb.Contact = function(un, id) {
 };
 
 
-//TODO: implement create function for inserting into ContactLists
+//Add contact to database
 mb.Contact.prototype.create = function() {
 	DatabaseInterface.add('contacts', this.uid);
 };
 
+//Functions to output Contact info
 mb.Contact.prototype.getUsername = function() {
 	return this.username;
 };

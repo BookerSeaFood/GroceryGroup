@@ -4,12 +4,13 @@ mb.ContactList = function() {
 	this.contacts = [];
 };
 
+//Add a Contact to the list
 mb.ContactList.prototype.addItem = function(con) {
 	this.contacts.push(con);
 	return (this.contacts.length - 1);
 };
 
-// Search for and remove a ListItem by name
+// Search for and remove a Contact by name
 mb.ContactList.prototype.removeItem = function(contactName) {
 	for (i=0; i < this.contacts.length; i++) {
 	  	if (this.contacts[i].getName() === contactName) {
@@ -26,6 +27,7 @@ mb.ContactList.prototype.displayContacts = function() {
 	}
 };
 
+//Functions to output Contact info of a specific contact and ContactList length
 mb.ContactList.prototype.getName() = function(i) {
 	return this.contacts[i].getUsername();
 };
