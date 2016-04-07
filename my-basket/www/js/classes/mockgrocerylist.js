@@ -57,8 +57,6 @@ mb.MockGroceryList.prototype.get = function(i) {
 mb.MockGroceryList.prototype.edit = function(that, i, item){
 	that.items[i].name = item.name;
 	that.items[i].ct = item.ct;
-
-	alert('here');
 }
 
 mb.MockGroceryList.prototype.len = function() {
