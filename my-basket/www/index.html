@@ -89,14 +89,13 @@ View List
 		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
 
 		function update(num) {
-
 			var bgClass = 'oddListItem';
 			if (!mb.odd) {
 				bgClass = 'evenListItem';
 			}
 
 			$('.list').append('<div class="listItem ' + bgClass + '">' +
-					mb.listItemToHtml(mb.glob.curList.get(i)) + '</div>');
+					mb.listItemToHtml(mb.glob.curList.get(num)) + '</div>');
 
 			mb.odd = !mb.odd;
 		}
@@ -116,11 +115,10 @@ View List
 				return;
 			}
 
-			var i = mb.glob.curList.len();
 			mb.glob.curList.addItem(mb.glob.curList, item);
+			update(mb.glob.curList.len() -1);
 
 			clearInput();
-			update(i);
 		}
 
 		$('.enterItem').click(addItem);
