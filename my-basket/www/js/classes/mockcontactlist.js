@@ -1,5 +1,9 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+mb.listItemToHtml = function(that) {
+	return '<a href="#">' + this.username + ' x' +  '</a>';
+};
+
 mb.MockContactList = function() {
 	this.contacts = [];
 };
@@ -18,6 +22,14 @@ mb.MockContactList.prototype.removeItem = function(contactName) {
 	    }
 	}
   	return 0;
+};
+
+mb.MockContactList.prototype.load = function(listName) {
+	//Will eventually ping the server for shared lists / local storage for singles
+	this.contacts.push(new Contact('Julius',5));
+	this.contacts.push(new Contact('Julius',5));
+	this.contacts.push(new Contact('Julius',5));
+	this.contacts.push(new Contact('Julius',5));
 };
 
 mb.MockContactList.prototype.displayContacts = function() {
