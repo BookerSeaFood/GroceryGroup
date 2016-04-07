@@ -1,4 +1,4 @@
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.MockGroceryListItem = function(item) {
 	this.name = item.name;

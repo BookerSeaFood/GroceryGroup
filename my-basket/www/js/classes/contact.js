@@ -1,4 +1,4 @@
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.SERVER = '127.0.0.1/my-basket/';
 
