@@ -1,4 +1,4 @@
-if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
+if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.FakeStorage = function() {
 	this._data: new Object();
@@ -23,8 +23,8 @@ mb.FakeStorage.prototype.clear = function() {
 ////////////////////////////////////////////////////////////////////////////////
 
 mb.LocalStorageManager = function() {
-	this.userIdKey = "userId";
-	this.listKey = "list";
+	this.userIdKey = 'userId';
+	this.listKey = 'list';
 
 	this.storage = new FakeStorage;
 };
