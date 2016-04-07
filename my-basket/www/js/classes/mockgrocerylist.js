@@ -6,7 +6,7 @@ mb.MockGroceryListItem = function(item) {
 };
 
 mb.listItemToHtml = function(that) {
-	return '<a href="#">' + this.name + ' x' +  '</a>';
+	return '<a href="#">  MOCK OBJECT </a>';
 };
 
 /////////////////////////////////////////
