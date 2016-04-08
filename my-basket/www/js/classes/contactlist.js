@@ -36,6 +36,6 @@ mb.ContactList.prototype.getUID = function(i) {
 	return this.contacts[i].getUID();
 };
 
-mb.ContactList.prototype.len = function() {
+mb.ContactList.prototype.getLength = function() {
 	return this.contacts.length;
 };
