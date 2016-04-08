@@ -1,4 +1,4 @@
-.listTitle {
+.listTitle, .listListTitle {
 	text-align: center;
 	background-color: #eee;
 	font-size: 2em;
@@ -10,12 +10,9 @@
 	display: inline-block;
 }
 
-.listItem {
+.listItem, .itemList {
 	margin: 0 auto;
 	display: block;
-}
-
-.listItem {
 	text-align:center;
 	font-size: 1.75em;
 }
