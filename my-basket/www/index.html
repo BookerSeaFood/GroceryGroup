@@ -1,14 +1,14 @@
 ﻿<!DOCTYPE html>
 
 <html>
-    <head>
+	<head>
 		<title>myBasket</title>
 
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
 
 		<link rel="stylesheet" href="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.css">
 		<link rel="stylesheet" href="css/my-lists.css">
@@ -47,9 +47,9 @@
 
 			mb.glob.curItemId = -1;
 		</script>
-    </head>
+	</head>
 
-    <body>
+	<body>
 		<!--
 		-->
 		<div data-role="page" id="listOfLists">
@@ -57,10 +57,10 @@
 				<a href="#addListsPage" data-icon="plus">Create a List</a>
 				<h3>My Lists</h3>
 			</div>
-		    <div class="allLists">
+			<div class="allLists">
 				<!-- -->
-		    </div>
-        </div>
+			</div>
+		</div>
 
 		<!--
 		View List
@@ -68,38 +68,38 @@
 			*display items in list
 			*option to add item and reroute to add item page
 		 -->
-        <div data-role="page" id="listPage">
+		<div data-role="page" id="listPage">
 			<div data-role="header" class="listTitle">
 				<!-- -->
 			</div>
-		    <div class="list">
+			<div class="list">
 				<!-- -->
-		    </div>
-        </div>
+			</div>
+		</div>
 
 		<!--
 		Add item Page:
 			*enter name and number for item and adds item to list
 			*return to view list page
-            *select cancel: return to listPage
+			*select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
-            <div data-role="header">
-                <h2>Add Item</h2>
+			<div data-role="header">
+				<h2>Add Item</h2>
 				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 
-            </div>
-            <div style="padding16px;">
-                Item : <input class="nameInput" type="textbox" value="" placeholder="Item Name"/></input>
-            </div>
+			</div>
+			<div style="padding16px;">
+				Item : <input class="nameInput" type="textbox" value="" placeholder="Item Name"/></input>
+			</div>
 
-            <div style="padding16px;">
-                Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
-            </div>
+			<div style="padding16px;">
+				Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
+			</div>
 
-            <a  href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
+			<a href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
 
-        </div>
+		</div>
 
 
 		<!--
@@ -110,16 +110,16 @@
 				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 			</div>
 			<div style="padding16px;">
-                Item : <input class="editItemName" type="textbox" value="" placeholder="Item Name"/></input>
-            </div>
+				Item : <input class="editItemName" type="textbox" value="" placeholder="Item Name"/></input>
+			</div>
 
-            <div style="padding16px;">
-                Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
-            </div>
+			<div style="padding16px;">
+				Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
+			</div>
 
-            <a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
+			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
 		</div>
-    </body>
+	</body>
 	<script type="text/javascript" src="cordova.js"></script>
 	<script type="text/javascript">
 		// Still need a lot to be implemented for this to work, but this is
@@ -214,7 +214,7 @@
 			}
 
 			mb.glob.lists.add(new mb.MockGroceryList(name));
-			
+
 			updateGroceryListItems();
 			clearAddItemInput();
 		}
