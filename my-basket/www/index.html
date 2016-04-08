@@ -39,12 +39,12 @@
 
 			// Need to implement a lot here
 			mb.glob.lists = new mb.MockListList();
-			mb.glob.lists.add(new mb.MockGroceryList("Mock List"));
-			mb.glob.lists.add(new mb.MockGroceryList("Mock List 2"));
-			mb.glob.selectedList = "Mock List";
+			//mb.glob.lists.add(new mb.MockGroceryList("Mock List"));
+			//mb.glob.lists.add(new mb.MockGroceryList("Mock List 2"));
+			mb.glob.selectedList = "";
 
-			mb.glob.curList = mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
-			mb.glob.curList.load(mb.glob.selectedList);
+			mb.glob.curList = None;//mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
+			//mb.glob.curList.load(mb.glob.selectedList);
 
 			mb.glob.curItemId = -1;
 		</script>
@@ -61,6 +61,21 @@
 			<div class="allLists">
 				<!-- -->
 			</div>
+		</div>
+
+		<!--
+		-->
+		<div data-role="page" id="addListsPage">
+			<div data-role="header">
+				<h2>Add New List</h2>
+				<a href="#listOfLists" data-icon="delete" class="cancelNewList">Cancel</a>
+			</div>
+
+			<div style="padding16px;">
+				Name : <input class="listNameInput" type="textbox" value="" placeholder="List Name"/></input>
+			</div>
+
+			<a href="#listOfLists"><button class="enterList" id="EnterList">Create List</button></a>
 		</div>
 
 		<!--
@@ -99,9 +114,7 @@
 			</div>
 
 			<a href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
-
 		</div>
-
 
 		<!--
 		 -->
@@ -196,6 +209,10 @@
 		}
 
 		// Clear the input fields
+		function clearAddListInput() {
+			$('.listNameInput').val('');
+		}
+
 		function clearAddItemInput() {
 			$('.nameInput').val('');
 			$('.ctInput').val('');
@@ -207,6 +224,7 @@
 		}
 
 		function clearInput() {
+			clearAddListInput();
 			clearAddItemInput();
 			clearEditItemInputs();
 		}
@@ -221,8 +239,8 @@
 
 			mb.glob.lists.add(new mb.MockGroceryList(name));
 
-			updateGroceryListItems();
-			clearAddItemInput();
+			updateGroceryLists();
+			clearAddListInput();
 		}
 
 		// Item adding functionality
@@ -261,6 +279,8 @@
 		}
 
 		// Set click events
+		$('.enterList').click(addList);
+		$('.cancelNewList').click(clearInput);
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
