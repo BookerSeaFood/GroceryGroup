@@ -15,9 +15,13 @@
 
 		<script src="js/lib/jQuery/jquery-1.12.2.min.js"></script>
 		<script src="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
+
 		<script src="js/classes/mockgrocerylist.js"></script>
+		<script src="js/classes/mocklistlist.js"></script>
 
 		<script>
+			// Initialize all namespaces and global variables
+
 			if (mb == null || typeof(mb) != "object"){
 				 var mb = new Object();
 			}
@@ -26,30 +30,46 @@
 				mb.glob = new Object();
 			}
 
-			// Need to implement a lot here
-			mb.glob.selectedList = "Mock List";
-
 			$(document).bind("mobileinit",function() {
 				$.mobile.changePage.defaults.changeHash = false;
 				$.mobile.hashListeningEnabled = false;
 				$.mobile.pushStateEnabled = false;
 			});
 
-			mb.glob.curList = new mb.MockGroceryList();
+			// Need to implement a lot here
+			mb.glob.lists = new mb.MockListList();
+			mb.glob.lists.add(new mb.MockGroceryList("Mock List"));
+			mb.glob.lists.add(new mb.MockGroceryList("Mock List 2"));
+			mb.glob.selectedList = "Mock List";
+
+			mb.glob.curList = mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
 			mb.glob.curList.load(mb.glob.selectedList);
+
+			mb.glob.curItemId = -1;
 		</script>
     </head>
 
-<!--
-View List
-	*display list name
-	*display items in list
-	*option to add item and reroute to add item page
- -->
     <body>
+		<!--
+		-->
+		<div data-role="page" id="listOfLists">
+			<div data-role="header" class="listListTitle">
+				<a href="#addListsPage" data-icon="plus">Create a List</a>
+				<h3>My Lists</h3>
+			</div>
+		    <div class="allLists">
+				<!-- -->
+		    </div>
+        </div>
+
+		<!--
+		View List
+			*display list name
+			*display items in list
+			*option to add item and reroute to add item page
+		 -->
         <div data-role="page" id="listPage">
 			<div data-role="header" class="listTitle">
-				<a href="#addItemPage" data-icon="plus">Add Item</a>
 				<!-- -->
 			</div>
 		    <div class="list">
@@ -81,6 +101,9 @@ View List
 
         </div>
 
+
+		<!--
+		 -->
 		<div data-role="page" id="editItemPage">
 			<div data-role="header">
 				<h2>Edit Item</h2>
@@ -102,19 +125,48 @@ View List
 		// Still need a lot to be implemented for this to work, but this is
 		//  the basic idea
 
-		$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+		// Update the view
+		function updateGroceryListTitle() {
+			$('.listTitle').empty();
+			$('.listTitle').append('<a href="#addItemPage" data-icon="plus">Add Item</a>');
+			$('.listTitle').append('<a href="#listOfLists" data-icon="delete">Return to Lists</a>');
+			$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+		}
 
-		// Show the list items
-		mb.odd = false;
+		function updateGroceryLists() {
+			var odd = false
 
-		function update() {
-			mb.odd = false
+			$('.allLists').empty();
+
+			for (var i = 0; i < mb.glob.lists.len(); i++){
+				var bgClass = 'oddListItem';
+				if (!odd) {
+					bgClass = 'evenListItem';
+				}
+
+				var list = mb.glob.lists.get(i);
+				var el = $('<div class="listListItem ' + bgClass + '" id="' + list.name + '">' + mb.listToHtml(list) + '</div>');
+				$('.allLists').append(el);
+
+				$(el).click(function(){
+					mb.glob.selectedList = this.id.toString();
+					mb.glob.curList = mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
+					updateGroceryListItems();
+					updateGroceryListTitle();
+				});
+
+				odd = !odd;
+			}
+		}
+
+		function updateGroceryListItems() {
+			var odd = false
 
 			$('.list').empty();
 
 			for (var i = 0; i < mb.glob.curList.len(); i++){
 				var bgClass = 'oddListItem';
-				if (!mb.odd) {
+				if (!odd) {
 					bgClass = 'evenListItem';
 				}
 
@@ -123,16 +175,51 @@ View List
 				$('.list').append(el);
 
 				$(el).click(function(){
-					mb.curItemId = this.id.toString();
+					mb.glob.curItemId = this.id.toString();
 					setupEditItem()
-				})
+				});
 
-				mb.odd = !mb.odd;
+				odd = !odd;
 			}
 		}
 
-		update();
+		function update() {
+			updateGroceryLists();
+			updateGroceryListTitle();
+			updateGroceryListItems();
+		}
 
+		// Clear the input fields
+		function clearAddItemInput() {
+			$('.nameInput').val('');
+			$('.ctInput').val('');
+		}
+
+		function clearEditItemInputs() {
+			$('.editItemName').val('');
+			$('.editItemCt').val('');
+		}
+
+		function clearInput() {
+			clearAddItemInput();
+			clearEditItemInputs();
+		}
+
+		// List adding functionality
+		function addList() {
+			var name = $('.listNameInput').val();
+
+			if (!name){
+				return;
+			}
+
+			mb.glob.lists.add(new mb.MockGroceryList(name));
+			
+			updateGroceryListItems();
+			clearAddItemInput();
+		}
+
+		// Item adding functionality
 		function addItem() {
 			var item = new Object();
 			item.name = $('.nameInput').val();
@@ -145,23 +232,13 @@ View List
 
 			mb.glob.curList.addItem(mb.glob.curList, item);
 
-			update();
-			clearInput();
+			updateGroceryListItems();
+			clearAddItemInput();
 		}
 
-		$('.enterItem').click(addItem);
-
-		function clearInput() {
-			$('.nameInput').val('');
-			$('.ctInput').val('');
-			$('.editItemName').val('');
-			$('.editItemCt').val('');
-		}
-
-		$('.cancelItem').click(clearInput);
-
+		// Item editing functionality
 		function setupEditItem() {
-			var item = mb.glob.curList.get(mb.curItemId);
+			var item = mb.glob.curList.get(mb.glob.curItemId);
 			$('.editItemName').val(item.name);
 			$('.editItemCt').val(item.ct);
 		}
@@ -171,13 +248,19 @@ View List
 			item.name = $('.editItemName').val();
 			item.ct = $('.editItemCt').val();
 
-			mb.glob.curList.edit(mb.glob.curList, mb.curItemId, item);
+			mb.glob.curList.edit(mb.glob.curList, mb.glob.curItemId, item);
 
-			clearInput();
-			update();
+			updateGroceryListItems();
+			clearEditItemInputs();
 		}
 
+		// Set click events
+		$('.enterItem').click(addItem);
+		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+
+		// Update the view
+		update();
 
 	</script>
 </html>

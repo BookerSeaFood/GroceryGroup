@@ -12,9 +12,15 @@ mb.listItemToHtml = function(that) {
 
 ////////////////////////////////////////////////////////////////////////////////
 
-mb.MockGroceryList = function() {
+mb.MockGroceryList = function(str) {
 	this.items = [];
+	this.name = str;
 };
+
+mb.listToHtml = function(that) {
+	return '<a class="itemList" href="#listPage">' + that.name + '</a>';
+};
+
 
 // Will eventually ping the server for shared lists / local storage for singles
 mb.MockGroceryList.prototype.load = function(listName) {
