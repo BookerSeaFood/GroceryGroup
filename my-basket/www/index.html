@@ -18,7 +18,7 @@
 		<script src="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
 
 		<!-- Our modules -->
-		<script src="js/classes/mockgrocerylist.js"></script>
+		<script src="js/classes/grocerylist.js"></script>
 		<script src="js/classes/listlist.js"></script>
 
 		<!-- Initialize all namespaces and global variables -->
@@ -39,11 +39,11 @@
 
 			// Need to implement a lot here
 			mb.glob.lists = new mb.ListList();
-			//mb.glob.lists.add(new mb.MockGroceryList("Mock List"));
-			//mb.glob.lists.add(new mb.MockGroceryList("Mock List 2"));
+			//mb.glob.lists.add(new mb.GroceryList("Mock List"));
+			//mb.glob.lists.add(new mb.GroceryList("Mock List 2"));
 			mb.glob.selectedList = "";
 
-			mb.glob.curList = None;//mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
+			mb.glob.curList = None;//mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
 			//mb.glob.curList.load(mb.glob.selectedList);
 
 			mb.glob.curItemId = -1;
@@ -285,7 +285,7 @@
 
 				$(el).click(function(){
 					mb.glob.selectedList = this.id.toString();
-					mb.glob.curList = mb.MockListList.listByName(mb.glob.lists, mb.glob.selectedList);
+					mb.glob.curList = mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
 					updateGroceryListItems();
 					updateGroceryListTitle();
 				});
@@ -353,7 +353,7 @@
 				return;
 			}
 
-			mb.glob.lists.add(new mb.MockGroceryList(name));
+			mb.glob.lists.add(new mb.GroceryList(name));
 
 			updateGroceryLists();
 			clearAddListInput();
