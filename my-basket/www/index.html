@@ -50,8 +50,19 @@
 		</script>
 	</head>
 
+    <!--
+       Data role for all APP pages:
+        *all pages should contain title of page and a home button (icon or app title)
+        *all pages off should have opton to return to previous page
+            except ListofList and StartPage      
+    -->
+
 	<body>
-		<!--
+		<!--Listof Lists (also Home page once logged in)
+            *display all the users lists
+            *option to access profilePage
+            *option to create list
+            *option to edit a list by clicking on it 
 		-->
 		<div data-role="page" id="listOfLists">
 			<div data-role="header" class="listListTitle">
@@ -63,7 +74,43 @@
 			</div>
 		</div>
 
-		<!--
+        <!--Start Page: first pge to show up if not logged on
+            *display app name and logo
+            *option to log in
+            *option to register    
+         -->
+        <div data-role="page" id="startPage" >
+
+        </div>
+
+        <!--LogIn Page
+            *display button to go back
+            *prompt for username, password, and email
+            *display register button
+                -check if username or email had been used before
+                -if so: prompt for userName or passowrd to be changed
+                -if not: register user and direct to home page
+             -->
+        <div data-role="page" id="logInPage">
+
+        </div>
+
+        <!--RegisterPage
+            *display button to go back
+            *prompt for username and password
+            *display login button
+             -check if username and password exist
+              -if not prompt for different username or password
+               -else : login and direct to homepage 
+        -->
+        <div data-role="page" id="registerPage">
+
+        </div>
+
+
+		<!--Add List Page
+            *option to cancle
+            *option to add list and reroute to the ViewListpage for the new list
 		-->
 		<div data-role="page" id="addListsPage">
 			<div data-role="header">
@@ -83,6 +130,10 @@
 			*display list name
 			*display items in list
 			*option to add item and reroute to add item page
+            *option to edit items by clickign them and rerouting to 
+                edit item page
+            *option to return to ListofLists
+            *might: option to checkoff*delete) item without accessing edit item
 		 -->
 		<div data-role="page" id="listPage">
 			<div data-role="header" class="listTitle">
@@ -92,6 +143,47 @@
 				<!-- -->
 			</div>
 		</div>
+
+        <!--LeaveListPage
+            *check if other users have access to this page
+            *if only Use: option to delete list and redirect to listof lists
+            *if other user: option to leave list and redirect to listofLists
+        -->
+        <div data-role="page" id="leaveListPage">
+
+        </div>
+
+        <!--
+        -->
+        <div data-role="page" id="shareListPage">
+
+        </div>
+
+        <!--
+        Profile Page(also contains contacts)
+                *
+        -->
+        <div data-role="page" id="ProfilePage">
+
+        </div>
+
+        <!--
+        -->
+        <div data-role="page" id="deleteProfilePage">
+
+        </div>
+
+        <!--
+        -->
+        <div data-role="page" id="addContactPage">
+
+        </div>
+
+        <!--
+        -->
+        <div data-role="page" id="editContactPage">
+
+        </div>
 
 		<!--
 		Add item Page:
@@ -134,7 +226,14 @@
 
 			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
 		</div>
+
+        <!--
+        -->
+        <div data-role="page" id="">
+
+        </div>
 	</body>
+
 
 	<!-- Required library to build with phonegap -->
 	<script type="text/javascript" src="cordova.js"></script>
