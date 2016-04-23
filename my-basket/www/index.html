@@ -109,7 +109,7 @@
 
 
 		<!--Add List Page
-            *option to cancle
+            *option to cancel
             *option to add list and reroute to the ViewListpage for the new list
 		-->
 		<div data-role="page" id="addListsPage">
@@ -153,7 +153,11 @@
 
         </div>
 
-        <!--
+        <!--ShareListPage
+            *option to go back to listpage
+            *option to add user to list and redirect back to listpage
+            *display if user is already added to the list
+                or user isn't in database
         -->
         <div data-role="page" id="shareListPage">
 
@@ -161,25 +165,37 @@
 
         <!--
         Profile Page(also contains contacts)
-                *
+            *option to log off and redirect to start page
+            *option to go back to listoflists
+            *display profile name and email
+            *display contacts
+            *option to edit password
+            *option to add contact
+            *option to select contact and redirect 
+            to editcontact page
         -->
         <div data-role="page" id="ProfilePage">
 
         </div>
 
-        <!--
+        <!--delete profile page
+            *option to delete profile and redirect to startPage
         -->
         <div data-role="page" id="deleteProfilePage">
 
         </div>
 
-        <!--
+        <!--Add Contact Page
+            *option to add contact by user name or email and redirect to contact page
+            *check if username or email is in data base, display if not
         -->
         <div data-role="page" id="addContactPage">
 
         </div>
 
-        <!--
+        <!--Edit Contact Page
+            *display contact name
+            *option to delete contact
         -->
         <div data-role="page" id="editContactPage">
 
@@ -189,6 +205,7 @@
 		Add item Page:
 			*enter name and number for item and adds item to list
 			*return to view list page
+            *option to remove item from list
 			*select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
