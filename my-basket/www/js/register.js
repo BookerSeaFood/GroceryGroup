@@ -7,27 +7,7 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
  * @param {string} email The user's email adayress
  * @throws {UserAlreadyExistsException} If there is already a user in the database with
  *     the same username oremail as the one entered
- */
- function showUser(str) {
-		var url = 'localhost';
- 
-        if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            // code for IE6, IE5
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                var data = 
-            }
-        };
-        xmlhttp.open("POST",,true);
-        xmlhttp.send();
-    }
-}
- 
+ */ 
 mb.register = function(username, password, email, database) {
 	// Validate input data
 
