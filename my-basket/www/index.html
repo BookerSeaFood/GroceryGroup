@@ -364,7 +364,7 @@
 			var item = new Object();
 			item.name = $('.nameInput').val();
 			item.ct = $('.ctInput').val();
-			item.id = mb.glob.curList.len()
+			item.id = mb.glob.curList.len();
 
 			if (!item.name || !item.ct){
 				return;
@@ -388,6 +388,10 @@
 			item.name = $('.editItemName').val();
 			item.ct = $('.editItemCt').val();
 
+			if (!item.name || !item.ct){
+				return;
+			}
+			
 			mb.glob.curList.edit(mb.glob.curList, mb.glob.curItemId, item);
 
 			updateGroceryListItems();

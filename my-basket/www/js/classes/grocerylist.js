@@ -2,8 +2,8 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.GroceryListItem = function(item) {
 	this.name = item.name;
+	this.ct = item.ct;
 	this.id = item.id;
-	this.info = item.info;
 };
 
 mb.listItemToHtml = function(that) {
