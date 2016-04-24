@@ -1,6 +1,5 @@
 var Item = function() {
 	this.id = '_id_';
-	alert("potat");
 };
 
 Item.prototype.getID = function() {
@@ -13,20 +12,18 @@ Item.prototype.setID = function(id) {
 
 var GroceryItem = function () {
 	Item.call(this);
+	this.name = "potato";
 };
 
 GroceryItem.prototype = Object.create(Item.prototype);
 GroceryItem.prototype.constructor = Item;
-
-GroceryItem.prototype.setName = function(name) {
-	this.name = name;
-}
 
 GroceryItem.prototype.meh = function() {
 	alert(this.name);
 };
 
 //==============================================
+
 alert('begin test...');
 
 var testItem = new Item();
@@ -36,9 +33,7 @@ testItem.setID('000');
 alert(testItem.getID());
 
 var gItem = new GroceryItem();
-alert(gItem.printName());
 alert(gItem.getID());
 gItem.setID('woot!');
 alert(gItem.getID());
-gItem.setName("potato");
 gItem.meh();
