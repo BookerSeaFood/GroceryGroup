@@ -49,7 +49,7 @@ if (input::exists()){
                 ));
 
                 mail(input::get('email'), 'Thank you for registering with MyBasket',
-                        'To activate your account, go here: ' . congif::get('site_url') . '/activate.php?code=' .
+                        'To activate your account, go here: ' . config::get('site_url') . '/activate.php?code=' .
                         $activation_code . '&user=' . input::get('email'));
 
                 $db = db::getInstance();
