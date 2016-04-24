@@ -54,7 +54,7 @@
        Data role for all APP pages:
         *all pages should contain title of page and a home button (icon or app title)
         *all pages off should have opton to return to previous page
-            except ListofList and StartPage      
+            except ListofList and StartPage
     -->
 
 	<body>
@@ -62,7 +62,7 @@
             *display all the users lists
             *option to access profilePage
             *option to create list
-            *option to edit a list by clicking on it 
+            *option to edit a list by clicking on it
 		-->
 		<div data-role="page" id="listOfLists">
 			<div data-role="header" class="listListTitle">
@@ -77,7 +77,7 @@
         <!--Start Page: first pge to show up if not logged on
             *display app name and logo
             *option to log in
-            *option to register    
+            *option to register
          -->
         <div data-role="page" id="startPage" >
 
@@ -101,7 +101,7 @@
             *display login button
              -check if username and password exist
               -if not prompt for different username or password
-               -else : login and direct to homepage 
+               -else : login and direct to homepage
         -->
         <div data-role="page" id="registerPage">
 
@@ -130,7 +130,7 @@
 			*display list name
 			*display items in list
 			*option to add item and reroute to add item page
-            *option to edit items by clickign them and rerouting to 
+            *option to edit items by clickign them and rerouting to
                 edit item page
             *option to return to ListofLists
             *might: option to checkoff*delete) item without accessing edit item
@@ -171,7 +171,7 @@
             *display contacts
             *option to edit password
             *option to add contact
-            *option to select contact and redirect 
+            *option to select contact and redirect
             to editcontact page
         -->
         <div data-role="page" id="ProfilePage">
@@ -231,6 +231,11 @@
 			<div data-role="header">
 				<h2>Edit Item</h2>
 				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+
+				<!-- Parker is testing adding the remove Item-->
+				<a  href="#listPage" data-icon="delete"><button class="removeItem" id="RemoveItem">Delete</button></a>
+
+
 			</div>
 
 			<div style="padding16px;">
@@ -391,7 +396,7 @@
 			if (!item.name || !item.ct){
 				return;
 			}
-			
+
 			mb.glob.curList.edit(mb.glob.curList, mb.glob.curItemId, item);
 
 			updateGroceryListItems();
