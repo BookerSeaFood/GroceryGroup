@@ -6,6 +6,10 @@ mb.GroceryListItem = function(item) {
 	this.id = item.id;
 };
 
+mb.GroceryListItem.prototype.getName = function() {
+	return this.name;
+};
+
 mb.listItemToHtml = function(that) {
 	return '<a class="item' + that.id.toString() + '" href="#editItemPage">' + that.name + ' x' + that.ct.toString() + '</a>';
 };
@@ -31,10 +35,22 @@ mb.GroceryList.prototype.get = function(i) {
 	return this.items[i];
 };
 
+mb.GroceryList.prototype.getItem = function(that, itemName) {
+	for (i=0; i < that.items.length; i++) {
+		if(that.items[i].getName() === itemName) {
+			return that.items[i];
+		}
+	}
+};
+
 mb.GroceryList.prototype.edit = function(that, i, item){
 	that.items[i].name = item.name;
 	that.items[i].ct = item.ct;
-}
+};
+
+mb.GroceryList.prototype.getName = function() {
+	return this.name;
+};
 
 mb.GroceryList.prototype.len = function() {
 	return this.items.length;
@@ -42,4 +58,14 @@ mb.GroceryList.prototype.len = function() {
 
 mb.GroceryList.prototype.addItem = function(that, item) {
 	that.items.push(new mb.GroceryListItem(item));
+};
+
+mb.GroceryList.prototype.removeItem = function(that, itemName) {
+	for (i=0; i < that.items.length; i++) {
+	  	if (that.items[i].getName() === itemName) {
+	    	that.items.splice(i, 1);
+	    	return 1;
+	    }
+	}
+  	return 0;
 };

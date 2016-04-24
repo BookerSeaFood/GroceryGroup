@@ -1,20 +1,33 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.ListList = function(id) {
-	this._lists = [];
-	this.id = id;
+	//if(LocalStorageManager.getTest == "617"){
+		//this._lists = LocalStorageManager.getList();//[];
+		this._lists = [];
+		this.id = id;
+	//}else{
+		//this._lists = [];
+		//this._lists = LocalStorageManager.getList() || [];//[];
+		//this.id = id;
+	//}
+	
 };
 
 mb.ListList.prototype.get = function(i) {
 	return this._lists[i];
+	//return LocalStorageManager.getList();
 }
 
 mb.ListList.prototype.add = function(ls) {
 	this._lists.push(ls);
-};
+	//LocalStorageManager.setList(this._lists);//[];
+	//LocalStorageManager.setTest("617");
+
+	};
 
 mb.ListList.prototype.lists = function() {
 	return this._lists;
+	//return LocalStorageManager.getList();
 };
 
 mb.ListList.prototype.len = function() {

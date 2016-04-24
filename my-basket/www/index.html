@@ -20,6 +20,9 @@
 		<!-- Our modules -->
 		<script src="js/classes/grocerylist.js"></script>
 		<script src="js/classes/listlist.js"></script>
+		
+		<script src="js/classes/localstoragemanager.js"></script>
+
 
 		<!-- Initialize all namespaces and global variables -->
 		<script>
@@ -58,6 +61,20 @@
     -->
 
 	<body>
+        <!--Start Page: first pge to show up if not logged on
+       *display app name and logo
+       *option to log in
+       *option to register
+      -->
+        <div data-role="page" id="startPage">
+            <div data-role="header">
+                <h1>Welcome To MyBasket</h1>
+            </div>
+            <a href="#logInPage"><button>Log In</button></a>
+            <a href="#registerPage"><button>Register</button></a>
+
+        </div>
+
 		<!--Listof Lists (also Home page once logged in)
             *display all the users lists
             *option to access profilePage
@@ -65,23 +82,18 @@
             *option to edit a list by clicking on it
 		-->
 		<div data-role="page" id="listOfLists">
-			<div data-role="header" class="listListTitle">
+			<div data-role="header" class="listlistTitle">
 				<a href="#addListsPage" data-icon="plus">Create a List</a>
-				<h3>My Lists</h3>
+
+				<h2>Your Lists</h2>
 			</div>
 			<div class="allLists">
 				<!-- -->
 			</div>
+            
 		</div>
 
-        <!--Start Page: first pge to show up if not logged on
-            *display app name and logo
-            *option to log in
-            *option to register
-         -->
-        <div data-role="page" id="startPage" >
-
-        </div>
+      
 
         <!--LogIn Page
             *display button to go back
@@ -92,6 +104,18 @@
                 -if not: register user and direct to home page
              -->
         <div data-role="page" id="logInPage">
+            <div dat-role="header">
+                <h2>Log In</h2>
+            </div>
+            <div style="padding16px;">
+                UserName : <input class=userNameInput" type="textbox" value="" placeholder="User Name" /></input>
+            </div>
+
+            <div style="padding16px;">
+                Passowrd : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
+            </div>
+
+            <a href="#listOfLists"><button class="logIn" id=login">Log In</button></a>
 
         </div>
 
@@ -409,6 +433,7 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+  
 
 		// Update the view
 		update();

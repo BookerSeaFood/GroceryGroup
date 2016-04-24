@@ -1,0 +1,19 @@
+in the database
+-------------
+list
+	id
+	name
+	owner
+	members
+	items
+
+user
+	id
+	name
+	email
+	password
+	salt
+	activation_code
+	lists
+	contacts
+	date_joined
