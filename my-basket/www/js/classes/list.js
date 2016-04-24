@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
@@ -7,14 +7,14 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 /**
  * Class to represent static attributes of an Item
  * @Item class constructor
- * 
+ *
  * TODO:
  * Add more specific Item classes with their own attributes that inherit
- * functionality  
- */ 
+ * functionality
+ */
 mb.Item = function(name) {
 	this.name = name || '__name__';
-}; 
+};
 
 /**
  *  Return the name of the Item
@@ -29,10 +29,10 @@ mb.Item.prototype.getName = function() {
 /**
  * Class to represent the dynamic/changing data associated with an Item
  * @ItemInfo class constructor
- * 
+ *
  * TODO:
  * Add more specific ItemInfo classes with their own attributes that inherit
- * functionality   
+ * functionality
  */
 mb.ItemInfo = function(info) {
 	this.info = info || '__info__';
@@ -56,7 +56,7 @@ mb.ItemInfo.prototype.getInfo = function() {
 mb.ListItem = function(item, itemInfo) {
 	this.item = item;
 	this.itemInfo = itemInfo;
-}; 
+};
 
 /**
  * Return the name of the Item contained by the ListItem
@@ -70,7 +70,7 @@ mb.ListItem.prototype.getName = function() {
 /**
  * Return the information of the ItemInfo contained by the ListItem
  * @returns {unspecified_type} info
- * 
+ *
  * TODO:
  * Since ItemInfo is to contain information that will potentially be updated
  * regularly (as opposed to Item which shouldn't be touched) perhaps this
@@ -84,12 +84,12 @@ mb.ListItem.prototype.getInfo = function() {
 /**
  * Class to contain multiple ListItems
  * @List class constructor
- * 
+ *
  * TODO:
  * Add more specific List classes with their own attributes that inherit
  * functionality? Perhaps List as is has enough?
  */
-// Basic list with associated functionality 
+// Basic list with associated functionality
 mb.List = function(name) {
 	this.name = name || '__name__';
 	this.content = [];
@@ -168,6 +168,7 @@ mb.List.prototype.displayItems = function() {
 };
 
 //==============================================================
+/**
 alert('test');
 mli = new mb.Item('mockListItem');
 alert(mli.getName());
@@ -205,3 +206,4 @@ glist.displayItems();
 glist.removeItem('Jews');
 alert(glist.getName() + ' length= ' + glist.getLength());
 glist.displayItems();
+*/
