@@ -63,7 +63,6 @@ if (input::exists()){
                         'user_id' => $id
                     ));
                 }
-
             } catch(Exception $e){
                 die($e->getMessage());
             }
