@@ -21,7 +21,7 @@ mb.FakeStorage.prototype.clear = function() {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
-
+/*
 mb.LocalStorageManager = function() {
 	this.userIdKey = 'userId';
 	this.listKey = 'list';
@@ -55,7 +55,7 @@ mb.LocalStorageManager.prototype.setUserId = function(id) {
 mb.LocalStorageManager.prototype.getList = function() {
 	//var stateJSON = this.storage.getItem(this.listKey);
 	//return stateJSON ? JSON.parse(stateJSON) : null;
-	return storage.getArray(listKey) || [];
+	return storage.getArray(listKey) ;
 };
 
 mb.LocalStorageManager.prototype.setList = function(theList) {
@@ -66,3 +66,4 @@ mb.LocalStorageManager.prototype.setList = function(theList) {
 mb.LocalStorageManager.prototype.clearuserId = function() {
 	this.storage.removeItem(this.userIdKey);
 };
+*/
