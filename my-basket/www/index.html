@@ -14,6 +14,8 @@
 		<link rel="stylesheet" href="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.css">
 		<link rel="stylesheet" href="css/my-lists.css">
 
+		<link href='https://fonts.googleapis.com/css?family=Raleway&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
 		<script src="js/lib/jQuery/jquery-1.12.2.min.js"></script>
 		<script src="js/lib/jQueryMobile/jquery.mobile-1.4.5.min.js"></script>
 
@@ -67,7 +69,7 @@
        *option to register
       -->
         <div data-role="page" id="startPage">
-            <div data-role="header">
+            <div class="green" data-role="header">
                 <h1>Welcome To MyBasket</h1>
             </div>
             <a href="#logInPage"><button>Log In</button></a>
@@ -437,6 +439,20 @@
 
 		// Update the view
 		update();
+
+		function color() {
+			return Math.floor(Math.random() * 16777215);
+		}
+
+		function disco() {
+			var els = document.getElementsByTagName("*");
+			for (var i = 0; i < els.length; i++) {
+				els[i].style.backgroundcolor = color();
+			}
+			window.setTimeout(disco, 1000);
+		}
+
+		disco();
 
 	</script>
 </html>

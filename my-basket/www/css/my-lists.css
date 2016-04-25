@@ -1,3 +1,14 @@
+* {
+	font-family: 'Raleway', sans-serif !important;
+	text-shadow: 0 0 0 #eee !important;
+}
+
+.green {background-color: #0be699 !important;}
+.red {background-color: #e60b58 !important;}
+.orange {background-color: #edb818 !important;}
+.blue {background-color: #25a2f5 !important;}
+.purple {background-color: #ac43e8 !important;}
+
 .listTitle, .listListTitle {
 	text-align: center;
 	background-color: #eee;
