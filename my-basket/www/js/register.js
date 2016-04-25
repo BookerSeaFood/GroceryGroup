@@ -17,6 +17,7 @@ mb.register = function(username, password, email, database) {
 	// Insert provided information
 	toInsert.username = username;
 	toInsert.email = email;
+	toInsert.password = password;
 
 	// Generate an encrypted password
 	toInsert.salt = mb.genSalt();
@@ -28,7 +29,7 @@ mb.register = function(username, password, email, database) {
 	// Create a UUID for the user
 	toInsert.uuid = mb.UUID();
 	
-	var toInsertJSON = JSON.stringify(toInsert, ['username', 'email', 'salt', 'passCrypt', 'today', 'uuid']);
+	var toInsertJSON = JSON.stringify(toInsert, ['username', 'email', 'password']);
 	
 	var url = 'localhost';
  
