@@ -1,5 +1,5 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
-
+/*
 mb.LocalStorageManager = function() {
 	this.userIdKey = 'userId';
 	this.listKey = 'list';
@@ -37,11 +37,16 @@ mb.LocalStorageManager.prototype.setList = function(theList) {
 mb.LocalStorageManager.prototype.clearuserId = function() {
 	this.localStorage.removeItem(this.userIdKey);
 };
-
+*/
 mb.ListList = function(id) {
 	//if(LocalStorageManager.getTest == "617"){
 		//this._lists = LocalStorageManager.getList();//[];
-		this._lists = [];
+		
+		
+		var stateJSON = localStorage.getItem("list");
+	//return stateJSON ? JSON.parse(stateJSON) : null;
+	
+		this._lists = stateJSON ? JSON.parse(stateJSON) : null;
 		this.id = id;
 	//}else{
 		//this._lists = [];
@@ -54,12 +59,21 @@ mb.ListList = function(id) {
 mb.ListList.prototype.get = function(i) {
 	return this._lists[i];
 	//return LocalStorageManager.getList();
+	
+	//var stateJSON = this.storage.getItem(this.listKey);
+	//return stateJSON ? JSON.parse(stateJSON) : null;
+	
+	
 }
 
 mb.ListList.prototype.add = function(ls) {
 	this._lists.push(ls);
 	//LocalStorageManager.setList(this._lists);//[];
 	//mb.LocalStorageManager.setTest("617");
+	 localStorage.setItem("list", JSON.stringify(this._lists));
+	//this.i = 0;
+//	localStorage.setItem("cachedPosts", "");//
+	//localStorage.setArray("list", this._lists);
 
 	};
 
