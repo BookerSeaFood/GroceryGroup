@@ -81,6 +81,9 @@ mb.ListList.prototype.lists = function() {
 	return this._lists;
 	//return LocalStorageManager.getList();
 };
+mb.ListList.prototype.update = function(){
+	localStorage.setItem("list", JSON.stringify(this._lists));
+}
 
 mb.ListList.prototype.len = function() {
 	return this._lists.length;
