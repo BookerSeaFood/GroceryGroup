@@ -22,14 +22,12 @@ mb.register = function(username, password, email) {
 	var toInsertJSON = JSON.stringify(toInsert, ['username', 'email', 'password']);
 	var url = "http://localhost/public_html/register.php";
 
-	var xhr = new XMLHttpRequest(toInsertJSON);
-    xhr.onreadystatechange = function() {
-		if (this.readyState == 4) {
-			alert(this.status);
-		}
-    };
+	function wrap(response) {
+		JSON.parse(response);
+	};
 
-    xhr.open("POST", url, true);
-	xhr.setRequestHeader('Content-Type', 'multipart/form-data');
-    xhr.send();
+	var tag = document.createElement("script");
+	tag.src = 'register.php?callback=wrap';
+
+	document.getElementsByTagName("head")[0].appendChild(tag);
 };
