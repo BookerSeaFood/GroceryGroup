@@ -22,7 +22,12 @@
 		<!-- Our modules -->
 		<script src="js/classes/grocerylist.js"></script>
 		<script src="js/classes/listlist.js"></script>
+		<script src="js/register.js"></script>
+		<script>
 
+			mb.register("test", "password", "test@example.com");
+
+		</script>
 
 
 
@@ -71,7 +76,7 @@
     -->
 
 	<body>
-        
+
         <!--Start Page: first pge to show up if not logged on
        *display app name and logo
        *option to log in
@@ -82,7 +87,7 @@
                 <h1>MyBasket</h1>
             </div>
             <div style="text-align : center;">
-                <img src="logo.png" /> 
+                <img src="logo.png" />
             </div>
             <a href="#logInPage" ><button style="background-color:#87f69b">Log In</button></a>
             <a href="#registerPage"><button style="background-color:#87f69b">Register</button></a>
@@ -155,13 +160,13 @@
             <div style="padding16px;">
                 Password : <input class="registerPassword" type="textbox" value="" placeholder="Password" /></input>
             </div>
-			
+
 			<div style="padding16px;">
 				Email : <input class="registerEmail" type="textbox" value="" placeholder="Email" /></input>
 			</div>
-			
+
 			<a href="#listOfLists"><button style="background-color:#87f69b" class="register" id="register">Enter</button></a>
-			
+
         </div>
 
 
@@ -255,8 +260,8 @@
                 <!---->
              </div>
         </div>
-             
-            
+
+
 
         </div>
 
@@ -499,24 +504,24 @@
 		    user.password = $('.passwordInput').val();
 
             //todo: retrieve proper user account and make it the current user
-            
+
 		}
-		
+
 		function registerUser() {
 			var newUser = new Object();
 			newUser.username = $('.registerUserName').val();
 		    newUser.password = $('.registerPassword').val();
 			newUser.email = $('.registerEmail').val();
-			
+
 			mb.register(newUser.username, newUser.password, newUser.email, 0);
 			clearRegsiterInput();
 		};
 =======
-		
+
 		/*function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
-		
+
 			updateGroceryListItems();
 			clearEditItemInputs();
 		};*/
