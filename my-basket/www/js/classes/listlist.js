@@ -39,22 +39,19 @@ mb.LocalStorageManager.prototype.clearuserId = function() {
 };
 */
 mb.ListList = function(id) {
-	//if(LocalStorageManager.getTest == "617"){
-		//this._lists = LocalStorageManager.getList();//[];
-		
-		
+	if(localStorage.getItem("checklist") == 6){
 		var stateJSON = localStorage.getItem("list");
-	//return stateJSON ? JSON.parse(stateJSON) : null;
-	
 		this._lists = stateJSON ? JSON.parse(stateJSON) : null;
 		this.id = id;
-	//}else{
-		//this._lists = [];
-		//this._lists = LocalStorageManager.getList() || [];//[];
-		//this.id = id;
-	//}
+	}else{
+		this._lists = [];
+		this.id = id;
+	}
+	localStorage.setItem("checklist", 6);
+	
 	
 };
+
 
 mb.ListList.prototype.get = function(i) {
 	return this._lists[i];
@@ -68,13 +65,9 @@ mb.ListList.prototype.get = function(i) {
 
 mb.ListList.prototype.add = function(ls) {
 	this._lists.push(ls);
-	//LocalStorageManager.setList(this._lists);//[];
-	//mb.LocalStorageManager.setTest("617");
+	
+	
 	 localStorage.setItem("list", JSON.stringify(this._lists));
-	//this.i = 0;
-//	localStorage.setItem("cachedPosts", "");//
-	//localStorage.setArray("list", this._lists);
-
 	};
 
 mb.ListList.prototype.lists = function() {
