@@ -24,7 +24,7 @@
 		<script src="js/classes/listlist.js"></script>
 
 
-		
+
 
 		<!-- Initialize all namespaces and global variables -->
 		<script>
@@ -34,6 +34,12 @@
 
 			if (mb.glob == null || typeof(mb.glob) != "object"){
 				mb.glob = new Object();
+			}
+
+			mb.nextGlobalID = 0;
+			mb.nextID = function() {
+				mb.nextGlobalID += 1;
+				return mb.nextGlobalID;
 			}
 
 			$(document).bind("mobileinit",function() {
@@ -429,6 +435,14 @@
 			updateGroceryListItems();
 			clearEditItemInputs();
 		}
+		
+		/*function deleteItem() {
+			var item = mb.glob.curList.get(mb.glob.curItemId);
+			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
+		
+			updateGroceryListItems();
+			clearEditItemInputs();
+		};*/
 
 		// Set click events
 		$('.enterList').click(addList);
@@ -436,6 +450,7 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+		//$('.removeItem').click(deleteItem);
 
 
 		// Update the view
