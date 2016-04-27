@@ -7,7 +7,12 @@ list
 	members
 	items
 
-
+items
+	id
+	name
+	amount
+	timer
+	added-by
 
 user
 	id
@@ -18,5 +23,5 @@ user
 	activation_code
 	lists
 	contacts
-	date_joined
-	prof_pic
+	date-joined
+	prof-pic
