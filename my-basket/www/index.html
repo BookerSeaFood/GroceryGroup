@@ -118,7 +118,7 @@
                 -if not: register user and direct to home page
              -->
         <div data-role="page" id="logInPage">
-            <div dat-role="header" class="orange">
+            <div data-role="header" class="orange">
                 <h2>Log In</h2>
             </div>
             <div style="padding16px;">
@@ -126,7 +126,7 @@
             </div>
 
             <div style="padding16px;">
-                Passowrd : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
+                Password : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
             </div>
 
             <a href="#listOfLists"><button style="background-color:#87f69b" class="logIn" id="login">Enter</button></a>
@@ -142,7 +142,23 @@
                -else : login and direct to homepage
         -->
         <div data-role="page" id="registerPage" >
+			<div data-role="header" class="orange">
+				<h2>Register</h2>
+			</div>
+			 <div style="padding16px;">
+                UserName : <input class="registerUserName" type="textbox" value="" placeholder="User Name" /></input>
+            </div>
 
+            <div style="padding16px;">
+                Password : <input class="registerPassword" type="textbox" value="" placeholder="Password" /></input>
+            </div>
+			
+			<div style="padding16px;">
+				Email : <input class="registerEmail" type="textbox" value="" placeholder="Email" /></input>
+			</div>
+			
+			<a href="#listOfLists"><button style="background-color:#87f69b" class="register" id="register">Enter</button></a>
+			
         </div>
 
 
@@ -471,6 +487,15 @@
             //todo: retrieve proper user account and make it the current user
             
 		}
+		
+		function registerUser() {
+			var newUser = new Object();
+			newUser.username = $('.registerUserName').val();
+		    newUser.password = $('.registerPassword').val();
+			newUser.email = $('.registerEmail').val();
+			
+			mb.register(newUser.username, newUser.password, newUser.email, 0);
+		};
 =======
 		
 		/*function deleteItem() {
@@ -490,6 +515,7 @@
 		$('.submitEdit').click(doEditItem);
 <<<<<<< HEAD
 		$('.logIn').click(logUserIn);
+		$('.register').click(registerUser);
 =======
 		//$('.removeItem').click(deleteItem);
 >>>>>>> origin/master

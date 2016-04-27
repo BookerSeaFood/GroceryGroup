@@ -42,10 +42,11 @@ mb.register = function(username, password, email, database) {
     }
     xmlhttp.onreadystatechange = function() {
 	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			document.getElementById("data").innerhtml = "Hi";
 		}
     };
-    xmlhttp.open("POST",url,true);
-    xmlhttp.send(toInsertJSON);
+    xmlhttp.open("POST","register.php",true);
+    xmlhttp.send();
 	// Insert all this data into the database
 	database.insert('users', toInsert)
 };
