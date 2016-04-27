@@ -461,6 +461,7 @@
 			updateGroceryListItems();
 			clearEditItemInputs();
 		}
+<<<<<<< HEAD
         //log in functionality
 		function logUserIn() {
 		    var user = new Object();
@@ -470,6 +471,16 @@
             //todo: retrieve proper user account and make it the current user
             
 		}
+=======
+		
+		/*function deleteItem() {
+			var item = mb.glob.curList.get(mb.glob.curItemId);
+			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
+		
+			updateGroceryListItems();
+			clearEditItemInputs();
+		};*/
+>>>>>>> origin/master
 
 		// Set click events
 		$('.enterList').click(addList);
@@ -477,7 +488,11 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+<<<<<<< HEAD
 		$('.logIn').click(logUserIn);
+=======
+		//$('.removeItem').click(deleteItem);
+>>>>>>> origin/master
 
 
 		// Update the view
