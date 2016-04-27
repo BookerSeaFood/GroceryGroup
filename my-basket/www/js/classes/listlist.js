@@ -42,16 +42,18 @@ mb.ListList = function(id) {
 	//if(LocalStorageManager.getTest == "617"){
 		//this._lists = LocalStorageManager.getList();//[];
 		
-		
-		var stateJSON = localStorage.getItem("list");
-	//return stateJSON ? JSON.parse(stateJSON) : null;
-	
-		this._lists = stateJSON ? JSON.parse(stateJSON) : null;
-		this.id = id;
+		if(localStorage.getItem("checkList") == 5){
+			var stateJSON = localStorage.getItem("list");
+			//return stateJSON ? JSON.parse(stateJSON) : null;
+ 			this._lists = stateJSON ? JSON.parse(stateJSON) : null;
+			this.id = id;
+		}else{
+		 	this._lists = [];
+			this.id = id;
+		}
+		localStorage.setItem("checkList", 5);
 	//}else{
-		//this._lists = [];
-		//this._lists = LocalStorageManager.getList() || [];//[];
-		//this.id = id;
+		
 	//}
 	
 };
