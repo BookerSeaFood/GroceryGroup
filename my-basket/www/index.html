@@ -436,13 +436,13 @@
 			clearEditItemInputs();
 		}
 		
-		function deleteItem() {
+		/*function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
 		
 			updateGroceryListItems();
 			clearEditItemInputs();
-		};
+		};*/
 
 		// Set click events
 		$('.enterList').click(addList);
@@ -450,7 +450,7 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
-		$('.removeItem').click(deleteItem);
+		//$('.removeItem').click(deleteItem);
 
 
 		// Update the view
