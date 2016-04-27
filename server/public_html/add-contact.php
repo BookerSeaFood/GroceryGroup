@@ -8,21 +8,28 @@ if ($user->notHasPermission('logged in')){
     redirect::to('index.php');
 }
 
-
 if (input::exists()){
-    if (token::check(input::get('token'))){
-        $validate = new validate();
-        $validate->check($_POST, array(
-			//
-        ));
+    $validate = new validate();
+    $validate->check($_POST, array(
+		'email' => array(
+			'required' => true,
+			'email' => true
+		)
+    ));
 
-        if ($validate->passed()){
-            try {
-                //database actions
+    if ($validate->passed()){
+        try {
+            //database actions
+			$toAdd = -1;
 
-            } catch(Exception $e){
-                die($e->getMessage());
-            }
+			$contacts = $user->data()->contacts;
+			$contacts .= ',' . $toAdd;
+			$user->update(array(
+				'contacts' => $contacts
+			));
+
+        } catch(Exception $e){
+            die($e->getMessage());
         }
     }
 }

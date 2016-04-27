@@ -47,7 +47,7 @@ class user {
             $id = $this->_data->id;
         }
 
-        if (!$db->update('ds_user_data', $id, $fields)){
+        if (!$db->update('users', $id, $fields)){
             throw new Exception('There was a problem updating your profile.');
         }
     }
@@ -140,17 +140,6 @@ class user {
             return $this->_data->type !== 'l';
         } else if ($key === 'admin'){
             return $this->_data->type !== 'a';
-        } else if (is_numeric($key)){
-            if ($this->_data->type === 'a'){
-                return false;
-            }
-            $projposals = explode(',', $this->_data->projposals);
-            foreach ($projposals as $projposal){
-                if (!empty($projposal) && $key == $projposal){
-                    return false;
-                }
-            }
-            return true;
         }
 
         return true; //unknown permission

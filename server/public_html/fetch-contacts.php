@@ -10,19 +10,17 @@ if ($user->notHasPermission('logged in')){
 
 
 if (input::exists()){
-    if (token::check(input::get('token'))){
-        $validate = new validate();
-        $validate->check($_POST, array(
-			//
-        ));
+    $validate = new validate();
+    $validate->check($_POST, array(
+		//
+    ));
 
-        if ($validate->passed()){
-            try {
-                //database actions
+    if ($validate->passed()){
+        try {
+            //database actions
 
-            } catch(Exception $e){
-                die($e->getMessage());
-            }
+        } catch(Exception $e){
+            die($e->getMessage());
         }
     }
 }

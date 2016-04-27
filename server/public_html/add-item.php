@@ -8,11 +8,17 @@ if ($user->notHasPermission('logged in')){
     redirect::to('index.php');
 }
 
-
 if (input::exists()){
     $validate = new validate();
     $validate->check($_POST, array(
-		//
+		'name' => array(
+			'required' => true,
+			'max' => 256
+		),
+
+		'amount' => array(
+			'required' => true
+		),
     ));
 
     if ($validate->passed()){

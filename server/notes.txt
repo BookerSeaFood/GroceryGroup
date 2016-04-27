@@ -7,7 +7,7 @@ list
 	members
 	items
 
-items
+item 
 	id
 	name
 	amount

@@ -3,12 +3,12 @@
 require_once '../core/init.php';
 req::once('functions/rand_pass.php');
 
-if (input::exists()){
-	$user = new user();
-	if ($user->notHasPermission('logged in')){
-	    die();
-	}
+$user = new user();
+if ($user->notHasPermission('logged in')){
+	die();
+}
 
+if (input::exists()){
     if (token::check(input::get('token'))){
         $validate = new validate();
         $validate->check($_POST, array(
