@@ -25,8 +25,7 @@ if (input::exists()){
 			$login = $user->login(input::get('email'), input::get('password'), $remember);
 
 			if ($login){
-				//TODO: replace these with session flashes
-				// make sure user has permission to log in (activated and not banned)
+				//TODO: make sure user has permission to log in (activated and not banned)
 				if ($user->data()->status == 'u'){
 					$user->logout();
 				} else if ($user->data()->status == 'b') {
