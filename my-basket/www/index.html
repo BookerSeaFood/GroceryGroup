@@ -58,6 +58,8 @@
 			//mb.glob.curList.load(mb.glob.selectedList);
 
 			mb.glob.curItemId = -1;
+
+			mb.blob.curUser = none;
 		</script>
 	</head>
 
@@ -69,17 +71,21 @@
     -->
 
 	<body>
+        
         <!--Start Page: first pge to show up if not logged on
        *display app name and logo
        *option to log in
        *option to register
       -->
         <div data-role="page" id="startPage">
-            <div class="green" data-role="header">
-                <h1>Welcome To MyBasket</h1>
+            <div class="orange" data-role="header">
+                <h1>MyBasket</h1>
             </div>
-            <a href="#logInPage"><button>Log In</button></a>
-            <a href="#registerPage"><button>Register</button></a>
+            <div style="text-align : center;">
+                <img src="logo.png" /> 
+            </div>
+            <a href="#logInPage" ><button style="background-color:#87f69b">Log In</button></a>
+            <a href="#registerPage"><button style="background-color:#87f69b">Register</button></a>
 
         </div>
 
@@ -90,10 +96,10 @@
             *option to edit a list by clicking on it
 		-->
 		<div data-role="page" id="listOfLists">
-			<div data-role="header" class="listlistTitle">
-				<a href="#addListsPage" data-icon="plus">Create a List</a>
-
-				<h2>Your Lists</h2>
+			<div class="listlistTitle" data-role="header">
+				<a href="#addListsPage" style ="background-color: #fbb039" data-icon="plus">Create a List</a>
+                <a href="#profilePage" style="background-color: #fbb039" data-icon="user">Profile</a>
+				<h1>Your Lists</h1>
 			</div>
 			<div class="allLists">
 				<!-- -->
@@ -112,7 +118,7 @@
                 -if not: register user and direct to home page
              -->
         <div data-role="page" id="logInPage">
-            <div dat-role="header">
+            <div dat-role="header" class="orange">
                 <h2>Log In</h2>
             </div>
             <div style="padding16px;">
@@ -123,7 +129,7 @@
                 Passowrd : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
             </div>
 
-            <a href="#listOfLists"><button class="logIn" id="login">Log In</button></a>
+            <a href="#listOfLists"><button style="background-color:#87f69b" class="logIn" id="login">Enter</button></a>
 
         </div>
 
@@ -135,7 +141,7 @@
               -if not prompt for different username or password
                -else : login and direct to homepage
         -->
-        <div data-role="page" id="registerPage">
+        <div data-role="page" id="registerPage" >
 
         </div>
 
@@ -145,16 +151,16 @@
             *option to add list and reroute to the ViewListpage for the new list
 		-->
 		<div data-role="page" id="addListsPage">
-			<div data-role="header">
+			<div data-role="header" class="orange">
 				<h2>Add New List</h2>
-				<a href="#listOfLists" data-icon="delete" class="cancelNewList">Cancel</a>
+				<a href="#listOfLists" style ="background-color: #fbb039" data-icon="delete" class="cancelNewList">Cancel</a>
 			</div>
 
 			<div style="padding16px;">
 				Name : <input class="listNameInput" type="textbox" value="" placeholder="List Name"/></input>
 			</div>
 
-			<a href="#listOfLists"><button class="enterList" id="EnterList">Create List</button></a>
+			<a href="#listOfLists"><button style="background-color:#87f69b" class="enterList" id="EnterList">Create List</button></a>
 		</div>
 
 		<!--
@@ -206,7 +212,32 @@
             *option to select contact and redirect
             to editcontact page
         -->
-        <div data-role="page" id="ProfilePage">
+        <div data-role="page" id="profilePage">
+            <div data-role="header" class="orange">
+                <h1>Account</h1>
+                <a href="#listOfLists" style="background-color: #fbb039" data-icon="delete">Back</a>
+                <a href="#logInPage" class="logOut" style="background-color: #fbb039" data-icon="power">Log Off</a>
+            </div>
+           <div style="padding8px;">
+                Username:
+            </div>
+            <div style="padding8px;">
+                Email:
+             </div>
+             <div style="padding8px;">
+                Password:
+              </div>
+            <div data-role="header" style="background-color:#fcc977">
+                <h1>Contacts</h1>
+            </div>
+            <input class="contactInput" type="textbox" value="Add New Contact" placeholder="newContact" /></input>
+            <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
+            <div class="contacts">
+                <!---->
+             </div>
+        </div>
+             
+            
 
         </div>
 
@@ -241,9 +272,9 @@
 			*select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
-			<div data-role="header">
+			<div data-role="header" class="orange">
 				<h2>Add Item</h2>
-				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+				<a href="#listPage" style ="background-color: #fbb039" data-icon="delete" class="cancelItem">Cancel</a>
 			</div>
 
 			<div style="padding16px;">
@@ -254,15 +285,15 @@
 				Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
 			</div>
 
-			<a href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
+			<a href="#listPage"><button style="background-color:#87f69b" class="enterItem" id="Enter">Enter Item</button></a>
 		</div>
 
 		<!--
 		 -->
 		<div data-role="page" id="editItemPage">
-			<div data-role="header">
+			<div data-role="header" class="orange">
 				<h2>Edit Item</h2>
-				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+				<a href="#listPage" style ="background-color: #fbb039" data-icon="delete" class="cancelItem">Cancel</a>
 
 				<!-- Parker is testing adding the remove Item-->
 				<a  href="#listPage" data-icon="delete"><button class="removeItem" id="RemoveItem">Delete</button></a>
@@ -278,14 +309,9 @@
 				Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
 			</div>
 
-			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
+			<a  href="#listPage"><button style="background-color:#87f69b" class="submitEdit" id="EditItem">Save</button></a>
 		</div>
 
-        <!--
-        -->
-        <div data-role="page" id="">
-
-        </div>
 	</body>
 
 
@@ -435,6 +461,15 @@
 			updateGroceryListItems();
 			clearEditItemInputs();
 		}
+        //log in functionality
+		function logUserIn() {
+		    var user = new Object();
+		    user.username = $('.usernameInput').val();
+		    user.password = $('.password.Input').val();
+
+            //todo: retrieve proper user account and make it the current user
+            
+		}
 
 		// Set click events
 		$('.enterList').click(addList);
@@ -442,6 +477,7 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+		$('.logIn').click(logUserIn);
 
 
 		// Update the view
