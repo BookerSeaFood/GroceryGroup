@@ -155,7 +155,7 @@ mb.listToHTML = function(that) {
 }
 
 //==============================================================================
-
+/*
 alert('begin test...');
 
 var testItem = new mb.Item();
@@ -196,3 +196,4 @@ myList.displayItems();
 
 var mysteryItem = myList.getItem('mega-lazer');
 alert(mysteryItem.toHTML(mysteryItem));
+*/

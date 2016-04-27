@@ -24,7 +24,7 @@
 		<script src="js/classes/listlist.js"></script>
 
 
-		
+
 
 		<!-- Initialize all namespaces and global variables -->
 		<script>
@@ -34,6 +34,12 @@
 
 			if (mb.glob == null || typeof(mb.glob) != "object"){
 				mb.glob = new Object();
+			}
+
+			mb.nextGlobalID = 0;
+			mb.nextID = function() {
+				mb.nextGlobalID += 1;
+				return mb.nextGlobalID;
 			}
 
 			$(document).bind("mobileinit",function() {
