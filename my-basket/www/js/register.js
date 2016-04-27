@@ -8,6 +8,10 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
  * @throws {UserAlreadyExistsException} If there is already a user in the database with
  *     the same username oremail as the one entered
  */ 
+mb.call(data) {
+	JSON.parse(data);
+}
+ 
 mb.register = function(username, password, email, database) {
 	// Validate input data
 
@@ -33,20 +37,11 @@ mb.register = function(username, password, email, database) {
 	
 	var url = 'localhost';
  
-    if (window.XMLHttpRequest) {
-        // code for IE7+, Firefox, Chrome, Opera, Safari
-        xmlhttp = new XMLHttpRequest();
-    } else {
-        // code for IE6, IE5
-        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange = function() {
-	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-			document.getElementById("data").innerhtml = "Hi";
-		}
-    };
-    xmlhttp.open("POST","register.php",true);
-    xmlhttp.send();
+	
+	var tag = document.createElement("script");
+	tag.src = 'register.php?callback=call';
+
+	document.getElementsByTagName("head")[0].appendChild(tag);
 	// Insert all this data into the database
 	//database.insert('users', toInsert)
 };

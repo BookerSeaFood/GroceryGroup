@@ -112,10 +112,10 @@
         <!--LogIn Page
             *display button to go back
             *prompt for username, password, and email
-            *display register button
-                -check if username or email had been used before
-                -if so: prompt for userName or passowrd to be changed
-                -if not: register user and direct to home page
+             *display login button
+             -check if username and password exist
+              -if not prompt for different username or password
+               -else : login and direct to homepage
              -->
         <div data-role="page" id="logInPage">
             <div data-role="header" class="orange">
@@ -138,17 +138,16 @@
         <!--RegisterPage
             *display button to go back
             *prompt for username and password
-            *display login button
-             -check if username and password exist
-              -if not prompt for different username or password
-               -else : login and direct to homepage
+			*display register button
+                -check if username or email had been used before
+                -if so: prompt for username or password to be changed
+                -if not: register user and direct to home page
         -->
         <div data-role="page" id="registerPage" >
 			<div data-role="header" class="orange">
 				<h2>Register</h2>
 			</div>
-			<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelRegister">Cancel</a>
-			
+			<a href="#startPage" style ="background-color: #fbb039" data-role="button" data-icon="delete" class="cancelRegister">Cancel</a>
 			<div style="padding16px;">
                 User Name : <input class="registerUserName" type="textbox" value="" placeholder="User Name" /></input>
             </div>
