@@ -48,5 +48,5 @@ mb.register = function(username, password, email, database) {
     xmlhttp.open("POST","register.php",true);
     xmlhttp.send();
 	// Insert all this data into the database
-	database.insert('users', toInsert)
+	//database.insert('users', toInsert)
 };

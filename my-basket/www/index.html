@@ -121,8 +121,10 @@
             <div data-role="header" class="orange">
                 <h2>Log In</h2>
             </div>
+			<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelLogin">Cancel</a>
+			
             <div style="padding16px;">
-                UserName : <input class="userNameInput" type="textbox" value="" placeholder="User Name" /></input>
+                User Name : <input class="userNameInput" type="textbox" value="" placeholder="User Name" /></input>
             </div>
 
             <div style="padding16px;">
@@ -145,8 +147,10 @@
 			<div data-role="header" class="orange">
 				<h2>Register</h2>
 			</div>
-			 <div style="padding16px;">
-                UserName : <input class="registerUserName" type="textbox" value="" placeholder="User Name" /></input>
+			<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelRegister">Cancel</a>
+			
+			<div style="padding16px;">
+                User Name : <input class="registerUserName" type="textbox" value="" placeholder="User Name" /></input>
             </div>
 
             <div style="padding16px;">
@@ -246,7 +250,7 @@
             <div data-role="header" style="background-color:#fcc977">
                 <h1>Contacts</h1>
             </div>
-            <input class="contactInput" type="textbox" value="Add New Contact" placeholder="newContact" /></input>
+            <input class="contactInput" type="textbox" value="" placeholder="New Contact" /></input>
             <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
             <div class="contacts">
                 <!---->
@@ -418,6 +422,17 @@
 			$('.editItemName').val('');
 			$('.editItemCt').val('');
 		}
+		
+		function clearRegisterInput() {
+			$('.registerUserName').val('');
+			$('.registerPassword').val('');
+			$('.registerEmail').val('');
+		}
+		
+		function clearLoginInput() {
+			$('.usernameInput').val('');
+			$('.passwordInput').val('');
+		}
 
 		function clearInput() {
 			clearAddListInput();
@@ -482,7 +497,7 @@
 		function logUserIn() {
 		    var user = new Object();
 		    user.username = $('.usernameInput').val();
-		    user.password = $('.password.Input').val();
+		    user.password = $('.passwordInput').val();
 
             //todo: retrieve proper user account and make it the current user
             
@@ -495,6 +510,7 @@
 			newUser.email = $('.registerEmail').val();
 			
 			mb.register(newUser.username, newUser.password, newUser.email, 0);
+			clearRegsiterInput();
 		};
 =======
 		
@@ -515,7 +531,9 @@
 		$('.submitEdit').click(doEditItem);
 <<<<<<< HEAD
 		$('.logIn').click(logUserIn);
+		$('.cancelLogin').click(clear
 		$('.register').click(registerUser);
+		$('.cancelRegister').click(clearRegisterInput);
 =======
 		//$('.removeItem').click(deleteItem);
 >>>>>>> origin/master
