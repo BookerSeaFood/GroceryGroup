@@ -29,7 +29,7 @@
 
 		</script>
 
-
+		
 
 		<!-- Initialize all namespaces and global variables -->
 		<script>
@@ -39,12 +39,6 @@
 
 			if (mb.glob == null || typeof(mb.glob) != "object"){
 				mb.glob = new Object();
-			}
-
-			mb.nextGlobalID = 0;
-			mb.nextID = function() {
-				mb.nextGlobalID += 1;
-				return mb.nextGlobalID;
 			}
 
 			$(document).bind("mobileinit",function() {
@@ -63,8 +57,6 @@
 			//mb.glob.curList.load(mb.glob.selectedList);
 
 			mb.glob.curItemId = -1;
-
-			mb.blob.curUser = none;
 		</script>
 	</head>
 
@@ -76,21 +68,29 @@
     -->
 
 	<body>
+<<<<<<< HEAD
+=======
 
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
         <!--Start Page: first pge to show up if not logged on
        *display app name and logo
        *option to log in
        *option to register
       -->
         <div data-role="page" id="startPage">
-            <div class="orange" data-role="header">
-                <h1>MyBasket</h1>
+            <div class="green" data-role="header">
+                <h1>Welcome To MyBasket</h1>
             </div>
+<<<<<<< HEAD
+            <a href="#logInPage"><button>Log In</button></a>
+            <a href="#registerPage"><button>Register</button></a>
+=======
             <div style="text-align : center;">
                 <img src="logo.png" />
             </div>
             <a href="#logInPage" ><button style="background-color:#87f69b">Log In</button></a>
             <a href="#registerPage"><button style="background-color:#87f69b">Register</button></a>
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
 
         </div>
 
@@ -101,10 +101,10 @@
             *option to edit a list by clicking on it
 		-->
 		<div data-role="page" id="listOfLists">
-			<div class="listlistTitle" data-role="header">
-				<a href="#addListsPage" style ="background-color: #fbb039" data-icon="plus">Create a List</a>
-                <a href="#profilePage" style="background-color: #fbb039" data-icon="user">Profile</a>
-				<h1>Your Lists</h1>
+			<div data-role="header" class="listlistTitle">
+				<a href="#addListsPage" data-icon="plus">Create a List</a>
+
+				<h2>Your Lists</h2>
 			</div>
 			<div class="allLists">
 				<!-- -->
@@ -123,20 +123,23 @@
                -else : login and direct to homepage
              -->
         <div data-role="page" id="logInPage">
-            <div data-role="header" class="orange">
+            <div dat-role="header">
                 <h2>Log In</h2>
 				<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelLogin">Cancel</a>
             </div>
+<<<<<<< HEAD
+=======
 			
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
             <div style="padding16px;">
-                User Name : <input class="userNameInput" type="textbox" value="" placeholder="User Name" /></input>
+                UserName : <input class="userNameInput" type="textbox" value="" placeholder="User Name" /></input>
             </div>
 
             <div style="padding16px;">
-                Password : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
+                Passowrd : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
             </div>
 
-            <a href="#listOfLists"><button style="background-color:#87f69b" class="logIn" id="login">Enter</button></a>
+            <a href="#listOfLists"><button class="logIn" id="login">Log In</button></a>
 
         </div>
 
@@ -148,6 +151,10 @@
                 -if so: prompt for username or password to be changed
                 -if not: register user and direct to home page
         -->
+<<<<<<< HEAD
+        <div data-role="page" id="registerPage">
+
+=======
         <div data-role="page" id="registerPage" >
 			<div data-role="header" class="orange">
 				<h2>Register</h2>
@@ -168,6 +175,7 @@
 
 			<a href="#listOfLists"><button style="background-color:#87f69b" class="register" id="register">Enter</button></a>
 
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
         </div>
 
 
@@ -176,16 +184,16 @@
             *option to add list and reroute to the ViewListpage for the new list
 		-->
 		<div data-role="page" id="addListsPage">
-			<div data-role="header" class="orange">
+			<div data-role="header">
 				<h2>Add New List</h2>
-				<a href="#listOfLists" style ="background-color: #fbb039" data-icon="delete" class="cancelNewList">Cancel</a>
+				<a href="#listOfLists" data-icon="delete" class="cancelNewList">Cancel</a>
 			</div>
 
 			<div style="padding16px;">
 				Name : <input class="listNameInput" type="textbox" value="" placeholder="List Name"/></input>
 			</div>
 
-			<a href="#listOfLists"><button style="background-color:#87f69b" class="enterList" id="EnterList">Create List</button></a>
+			<a href="#listOfLists"><button class="enterList" id="EnterList">Create List</button></a>
 		</div>
 
 		<!--
@@ -237,6 +245,9 @@
             *option to select contact and redirect
             to editcontact page
         -->
+<<<<<<< HEAD
+        <div data-role="page" id="ProfilePage">
+=======
         <div data-role="page" id="profilePage">
             <div data-role="header" class="orange">
                 <h1>Account</h1>
@@ -263,6 +274,7 @@
         </div>
 
 
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
 
         </div>
 
@@ -297,9 +309,9 @@
 			*select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
-			<div data-role="header" class="orange">
+			<div data-role="header">
 				<h2>Add Item</h2>
-				<a href="#listPage" style ="background-color: #fbb039" data-icon="delete" class="cancelItem">Cancel</a>
+				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 			</div>
 
 			<div style="padding16px;">
@@ -310,15 +322,15 @@
 				Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
 			</div>
 
-			<a href="#listPage"><button style="background-color:#87f69b" class="enterItem" id="Enter">Enter Item</button></a>
+			<a href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
 		</div>
 
 		<!--
 		 -->
 		<div data-role="page" id="editItemPage">
-			<div data-role="header" class="orange">
+			<div data-role="header">
 				<h2>Edit Item</h2>
-				<a href="#listPage" style ="background-color: #fbb039" data-icon="delete" class="cancelItem">Cancel</a>
+				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
 
 				<!-- Parker is testing adding the remove Item-->
 				<a  href="#listPage" data-icon="delete"><button class="removeItem" id="RemoveItem">Delete</button></a>
@@ -334,9 +346,14 @@
 				Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
 			</div>
 
-			<a  href="#listPage"><button style="background-color:#87f69b" class="submitEdit" id="EditItem">Save</button></a>
+			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
 		</div>
 
+        <!--
+        -->
+        <div data-role="page" id="">
+
+        </div>
 	</body>
 
 
@@ -427,17 +444,6 @@
 			$('.editItemName').val('');
 			$('.editItemCt').val('');
 		}
-		
-		function clearRegisterInput() {
-			$('.registerUserName').val('');
-			$('.registerPassword').val('');
-			$('.registerEmail').val('');
-		}
-		
-		function clearLoginInput() {
-			$('.usernameInput').val('');
-			$('.passwordInput').val('');
-		}
 
 		function clearInput() {
 			clearAddListInput();
@@ -498,6 +504,8 @@
 			clearEditItemInputs();
 		}
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
         //log in functionality
 		function logUserIn() {
 		    var user = new Object();
@@ -527,6 +535,7 @@
 			clearEditItemInputs();
 		};*/
 >>>>>>> origin/master
+>>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
 
 		// Set click events
 		$('.enterList').click(addList);
@@ -534,14 +543,6 @@
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
-<<<<<<< HEAD
-		$('.logIn').click(logUserIn);
-		$('.cancelLogin').click(clear
-		$('.register').click(registerUser);
-		$('.cancelRegister').click(clearRegisterInput);
-=======
-		//$('.removeItem').click(deleteItem);
->>>>>>> origin/master
 
 
 		// Update the view
