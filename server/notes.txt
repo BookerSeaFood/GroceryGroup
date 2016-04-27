@@ -7,6 +7,8 @@ list
 	members
 	items
 
+
+
 user
 	id
 	name
@@ -17,3 +19,4 @@ user
 	lists
 	contacts
 	date_joined
+	prof_pic
