@@ -474,19 +474,21 @@
 			clearRegsiterInput();
 		};
 
-		/*function deleteItem() {
+		function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
 
 			updateGroceryListItems();
 			clearEditItemInputs();
-		};*/
+		};
+		
 		// Set click events
 		$('.enterList').click(addList);
 		$('.cancelNewList').click(clearInput);
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
+		$('.deleteItem').click(deleteItem);
 
 
 		// Update the view
