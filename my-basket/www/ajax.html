@@ -1,0 +1,15 @@
+<html>
+	<script type="text/javascript">
+			var name = "Donald Trump";
+			var password = "dtrump";
+			var email = "dtrump@coolguy.com";
+			$.ajax({
+				dataType: 'jsonp',
+				data: {name: "username", password: "password", email: "email},
+				jsonp: 'jsonp_callback',
+				url: 'http://localhost/public_html/register.php',
+				success: function () {
+				},
+			});
+	</script>
+</html>
