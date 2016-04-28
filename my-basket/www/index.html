@@ -79,7 +79,7 @@
             <div data-role="header">
                 <p class="h1">Welcome To MyBasket<p>
             </div>
-            <img class="logo" src="img/logo.png" />
+            <img class="logo" src="img/gman.jpg" />
 			<div class="button-wrapper">
 	            <a href="#logInPage"><button class="button">Log In</button></a>
 	            <a href="#registerPage"><button class="button">Register</button></a>
@@ -91,6 +91,7 @@
             *option to access profilePage
             *option to create list
             *option to edit a list by clicking on it
+			*option to remove list
 		-->
 		<div data-role="page" id="listOfLists">
 			<div data-role="header" class="listlistTitle">
@@ -258,7 +259,6 @@
 		Add item Page:
 			*enter name and number for item and adds item to list
 			*return to view list page
-            *option to remove item from list
 			*select cancel: return to listPage
 		-->
 		<div data-role="page" id="addItemPage">
@@ -272,7 +272,13 @@
 
 			<a href="#listPage"><button class="enterItem button" id="Enter">Enter Item</button></a>
 		</div>
-
+		<!--
+			Edit item page:
+				*gives fields to edit item name and amount
+				*return to view list page
+				*Option to remove item from list
+				*cancelling returns to view list
+		-->
 		<div data-role="page" id="editItemPage">
 			<div data-role="header">
 				<p class="h1">Edit Item</p>
@@ -474,9 +480,19 @@
 
 		function login() {
 			mb.glob.username = $('.userNameInput').val();
+			if (mb.glob.username === '') {
+				mb.glob.username = 'test';
+			}
 			$('.username').html('Username: ' + mb.glob.username);
 			$('.email').html('Email: ' + mb.glob.email);
 
+			clearInput();
+		}
+		
+		function logout() {
+			mb.glob.username = 'test';
+			mb.glob.email = 'test@example.com';
+			
 			clearInput();
 		}
 
@@ -499,6 +515,7 @@
 		$('.register').click(register);
 		$('.deleteItem').click(deleteItem);
 		$('.deleteList').click(deleteList);
+		$('.logOut').click(logout);
 
 		// Update the view
 		update();
