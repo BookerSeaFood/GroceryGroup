@@ -333,15 +333,11 @@
 		}
 
 		function updateGroceryListItems() {
-			if (!mb.glob.curList) {
-				return;
-			}
-
 			var odd = false
 
 			$('.list').empty();
 
-			for (var i = 0; i < mb.glob.curList.length; i++){
+			for (var i = 0; i < mb.glob.curList.len(); i++){
 				var bgClass = 'oddListItem';
 				if (!odd) {
 					bgClass = 'evenListItem';
@@ -364,9 +360,7 @@
 			updateGroceryLists();
 			updateGroceryListTitle();
 			updateGroceryListItems();
-			if (mb.glob.curList){
-				mb.glob.curList.update();
-			}
+			mb.glob.curList.update();
 		}
 
 		// Clear the input fields
