@@ -22,10 +22,10 @@
 		<!-- Our modules -->
 		<script src="js/classes/grocerylist.js"></script>
 		<script src="js/classes/listlist.js"></script>
-		<script src="js/register.js"></script>
+		<!--script src="js/register.js"></script>
 		<script>
 			mb.register("test", "password", "test@example.com");
-		</script>
+		</script-->
 
 
 
@@ -51,10 +51,14 @@
 			//mb.glob.lists.add(new mb.GroceryList("Mock List 2"));
 			mb.glob.selectedList = "";
 
-			mb.glob.curList = None;//mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
+			mb.glob.curList = null;//mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
 			//mb.glob.curList.load(mb.glob.selectedList);
 
 			mb.glob.curItemId = -1;
+
+			mb.glob.username = "test";
+			mb.glob.email = "test@example.com";
+			mb.glob.profile_picture = "img/default.png";
 		</script>
 	</head>
 
@@ -92,7 +96,7 @@
 			<div data-role="header" class="listlistTitle">
 				<p class="h1">Your Lists</p>
 				<a href="#addListsPage" data-icon="plus" class="navButton">&nbsp;</a>
-				<a href="#profilePage" style="background-color: #fbb039" data-icon="user">Profile</a>
+				<a href="#profilePage" data-icon="user" class="navButton"></a>
 			</div>
 			<div class="allLists">
 				<!-- -->
@@ -114,13 +118,8 @@
 				<a href="#startPage" data-icon="back" class="cancelLogin navButton">&nbsp;</a>
             </div>
 
-            <div style="padding16px;">
-            	<input class="input userNameInput" type="text" value="" placeholder="User Name" /></input>
-            </div>
-
-            <div style="padding16px;">
-            	<input class="input passwordInput" type="text" value="" placeholder="Password" /></input>
-            </div>
+        	<input class="input userNameInput" type="text" value="" placeholder="User Name" /></input>
+        	<input class="input passwordInput" type="password" value="" placeholder="Password" /></input>
 
             <a href="#listOfLists"><button class="logIn button" id="login">Enter</button></a>
         </div>
@@ -135,23 +134,15 @@
         -->
         <div data-role="page" id="registerPage">
 			<div data-role="header">
-				<h2>Register</h2>
-				<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelRegister">Cancel</a>
+				<p class="h1">Register</p>
+				<a href="#startPage" data-icon="back" class="cancelRegister navButton">&nbsp;</a>
 			</div>
 
-			<div style="padding16px;">
-                User Name : <input class="registerUserName" type="text" value="" placeholder="User Name" /></input>
-            </div>
+        	<input class="registerUserName" type="text" value="" placeholder="User Name" /></input>
+            <input class="registerPassword" type="password" value="" placeholder="Password" /></input>
+			<input class="registerEmail" type="text" value="" placeholder="Email" /></input>
 
-            <div style="padding16px;">
-                Password : <input class="registerPassword" type="text" value="" placeholder="Password" /></input>
-            </div>
-
-			<div style="padding16px;">
-				Email : <input class="registerEmail" type="text" value="" placeholder="Email" /></input>
-			</div>
-
-			<a href="#listOfLists"><button style="background-color:#87f69b" class="register" id="register">Enter</button></a>
+			<a href="#listOfLists"><button class="button register" id="register">Enter</button></a>
         </div>
 
 
@@ -222,28 +213,21 @@
             to editcontact page
         -->
         <div data-role="page" id="profilePage">
-            <div data-role="header" class="orange">
-                <h1>Account</h1>
-                <a href="#listOfLists" style="background-color: #fbb039" data-icon="delete">Back</a>
-                <a href="#logInPage" class="logOut" style="background-color: #fbb039" data-icon="power">Log Off</a>
+            <div data-role="header">
+                <p class="h1">Account</p>
+                <a href="#listOfLists" class="navButton" data-icon="delete">&nbsp;</a>
+                <a href="#logInPage" class="logOut navButton" data-icon="power">&nbsp;</a>
             </div>
-           <div style="padding8px;">
-                Username:
-            </div>
-            <div style="padding8px;">
-                Email:
-             </div>
-             <div style="padding8px;">
-                Password:
-              </div>
-            <div data-role="header" style="background-color:#fcc977">
-                <h1>Contacts</h1>
+			<img class="profile-picture" src="img/default.png" />
+            <p class="username label">Username: </p>
+            <p class="email label">Email: </p>
+            <!--div data-role="header" class="smallHeader">
+                <p class="h1">Contacts</p>
             </div>
             <input class="contactInput" type="text" value="" placeholder="New Contact" /></input>
             <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
             <div class="contacts">
-                <!---->
-             </div>
+            </div-->
         </div>
 
         <!--delete profile page
@@ -288,8 +272,6 @@
 			<a href="#listPage"><button class="enterItem button" id="Enter">Enter Item</button></a>
 		</div>
 
-		<!--
-		 -->
 		<div data-role="page" id="editItemPage">
 			<div data-role="header">
 				<p class="h1">Edit Item</p>
@@ -302,7 +284,7 @@
 
 			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
 		</div>
-		
+
         <div data-role="page" id="">
 
         </div>
@@ -350,11 +332,15 @@
 		}
 
 		function updateGroceryListItems() {
+			if (!mb.glob.curList) {
+				return;
+			}
+
 			var odd = false
 
 			$('.list').empty();
 
-			for (var i = 0; i < mb.glob.curList.len(); i++){
+			for (var i = 0; i < mb.glob.curList.length; i++){
 				var bgClass = 'oddListItem';
 				if (!odd) {
 					bgClass = 'evenListItem';
@@ -377,7 +363,9 @@
 			updateGroceryLists();
 			updateGroceryListTitle();
 			updateGroceryListItems();
-			mb.glob.curList.update();
+			if (mb.glob.curList){
+				mb.glob.curList.update();
+			}
 		}
 
 		// Clear the input fields
@@ -395,10 +383,23 @@
 			$('.editItemCt').val('');
 		}
 
+		function clearLoginInputs() {
+			$('.usernameInput').val('');
+			$('.passwordInput').val('');
+		}
+
+		function clearRegistrationInputs() {
+			$('.registerUserName').val('');
+			$('.registerPassword').val('');
+			$('.registerEmail').val('');
+		}
+
 		function clearInput() {
 			clearAddListInput();
 			clearAddItemInput();
 			clearEditItemInputs();
+			clearLoginInputs();
+			clearRegistrationInputs();
 		}
 
 		// List adding functionality
@@ -454,26 +455,6 @@
 			clearEditItemInputs();
 		}
 
-        //log in functionality
-		function logUserIn() {
-		    var user = new Object();
-		    user.username = $('.usernameInput').val();
-		    user.password = $('.passwordInput').val();
-
-            //todo: retrieve proper user account and make it the current user
-
-		}
-
-		function registerUser() {
-			var newUser = new Object();
-			newUser.username = $('.registerUserName').val();
-		    newUser.password = $('.registerPassword').val();
-			newUser.email = $('.registerEmail').val();
-
-			mb.register(newUser.username, newUser.password, newUser.email, 0);
-			clearRegsiterInput();
-		};
-
 		/*function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
@@ -482,12 +463,32 @@
 			clearEditItemInputs();
 		};*/
 		// Set click events
+
+		function login() {
+			mb.glob.username = $('.userNameInput').val();
+			$('.username').html('Username: ' + mb.glob.username);
+			$('.email').html('Email: ' + mb.glob.email);
+
+			clearInput();
+		}
+
+		function register() {
+			mb.glob.username = $('.registerUserName').val();
+			mb.glob.email = $('.registerEmail').val();
+
+			$('.username').html('Username: ' + mb.glob.username);
+			$('.email').html('Email: ' + mb.glob.email);
+
+			clearInput();
+		}
+
 		$('.enterList').click(addList);
 		$('.cancelNewList').click(clearInput);
 		$('.enterItem').click(addItem);
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
-
+		$('.logIn').click(login);
+		$('.register').click(register);
 
 		// Update the view
 		update();
