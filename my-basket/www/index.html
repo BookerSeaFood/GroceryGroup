@@ -176,7 +176,6 @@
 				<p class="h1 listTitleText"></p>
 				<a href="#addItemPage" data-icon="plus" class="navButton">&nbsp;</a>
 				<a href="#listOfLists" data-icon="back" class="navButton">&nbsp;</a>
-				<a href="#listOfLists" data-icon="delete" class="deleteList navButton">&nbsp;</a>
 			</div>
 			<div class="list">
 				<!-- -->
@@ -318,14 +317,24 @@
 				}
 
 				var list = mb.glob.lists.get(i);
+				var wrap = $('<div class="listElWrap"></div>')
 				var el = $('<div class="listListItem ' + bgClass + '" id="' + list.name + '">' + mb.listToHtml(list) + '</div>');
-				$('.allLists').append(el);
+				var del = $('<a id="' + i + '" href="#listOfLists" class="ui-link ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all">&nbsp;</a>');
+
+				wrap.append(el);
+				wrap.append(del);
+
+				$('.allLists').append(wrap);
 
 				$(el).click(function(){
 					mb.glob.selectedList = this.id.toString();
 					mb.glob.curList = mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
 					updateGroceryListItems();
 					updateGroceryListTitle();
+				});
+
+				$(del).click(function(){
+					//<INSERT DELETE HERE>
 				});
 
 				odd = !odd;
