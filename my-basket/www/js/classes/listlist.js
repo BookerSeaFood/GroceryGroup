@@ -1,11 +1,12 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Constructor with given ID
 mb.ListList = function(id) {
 	this._lists = [];
 	this.id = id;
 };
 
-
+//Functions for accessing variables and adding lists
 mb.ListList.prototype.get = function(i) {
 	return this._lists[i];
 }
