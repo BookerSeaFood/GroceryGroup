@@ -429,6 +429,7 @@
 			clearAddListInput();
 		}
 
+		//List removing functionality
 		function deleteList() {
 			var list = mb.glob.curList;
 			for (i=0; i < list.len(); ++i) {
@@ -479,6 +480,7 @@
 			clearEditItemInputs();
 		}
 
+		//Item removal functionality
 		function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
@@ -488,8 +490,8 @@
 		};
 
 
-		// Set click events
-
+		
+		//User(login,logout,register) functionality
 		function login() {
 			mb.glob.username = $('.userNameInput').val();
 			if (mb.glob.username === '') {
