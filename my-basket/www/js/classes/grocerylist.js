@@ -11,7 +11,7 @@ mb.GroceryListItem.prototype.getName = function() {
 };
 
 mb.listItemToHtml = function(that) {
-	return '<a class="item' + that.id.toString() + '" href="#editItemPage">' + that.name + ' x' + that.ct.toString() + ' x ' + that.id.toString() + '</a>';
+	return '<a class="item' + that.id.toString() + '" href="#editItemPage">' + that.name + ' x' + that.ct.toString() + '</a>';
 };
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -62,6 +62,7 @@ mb.GroceryList.prototype.addItem = function(that, item) {
 
 mb.GroceryList.prototype.removeItem = function(that, itemName) {
 	var checksum = 0;
+	//Possible remove later, could be redundant
 	if (that.items.length === 1) {
 		that.items.splice(0);
 	}
@@ -70,7 +71,7 @@ mb.GroceryList.prototype.removeItem = function(that, itemName) {
 	    	that.items.splice(i, 1);
 	    	checksum = 1;
 	    }
-		if (checksum === 1) {
+		if (checksum === 1 && i !== that.items.length) {
 			that.items[i].id = i;
 		}
 	}
