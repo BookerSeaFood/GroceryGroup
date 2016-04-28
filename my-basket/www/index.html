@@ -185,6 +185,7 @@
 				<p class="h1 listTitleText"></p>
 				<a href="#addItemPage" data-icon="plus" class="navButton">&nbsp;</a>
 				<a href="#listOfLists" data-icon="back" class="navButton">&nbsp;</a>
+				<a href="#listOfLists" data-icon="delete" class="deleteList navButton">&nbsp;</a>
 			</div>
 			<div class="list">
 				<!-- -->
@@ -414,6 +415,17 @@
 			updateGroceryLists();
 			clearAddListInput();
 		}
+		
+		function deleteList() {
+			var list = mb.glob.curList;
+			for (i=0; i < list.len(); ++i) {
+				splice(i,1);
+			}
+			mb.glob.lists.removeList(mb.glob.lists, list.getName());
+
+			updateGroceryLists();
+			clearEditItemInputs();
+		};
 
 		// Item adding functionality
 		function addItem() {
@@ -471,7 +483,7 @@
 			newUser.email = $('.registerEmail').val();
 
 			mb.register(newUser.username, newUser.password, newUser.email, 0);
-			clearRegsiterInput();
+			clearRegisterInput();
 		};
 
 		function deleteItem() {
@@ -482,6 +494,7 @@
 			clearEditItemInputs();
 		};
 		
+		
 		// Set click events
 		$('.enterList').click(addList);
 		$('.cancelNewList').click(clearInput);
@@ -489,7 +502,7 @@
 		$('.cancelItem').click(clearInput);
 		$('.submitEdit').click(doEditItem);
 		$('.deleteItem').click(deleteItem);
-
+		$('.deleteList').click(deleteList);
 
 		// Update the view
 		update();
