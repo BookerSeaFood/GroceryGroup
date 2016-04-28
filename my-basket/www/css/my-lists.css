@@ -91,6 +91,25 @@
 	font-size: 3vh;
 }
 
+.listElWrap {
+	display: inline-block;
+	width: 100%;
+}
+
+.listListItem {
+	width: 85% !important;
+	float: left;
+}
+
+.listElWrap .ui-btn {
+	position: relative !important;
+	float: left;
+	width: 10vw !important;
+	height: 10vw !important;
+	margin: 2.5% 0 0 4%!important;
+	padding: 0 !important;
+}
+
 .green {background-color: #0be699 !important;}
 .lightGreen{background-color: #87f69b !important;}
 .darkGreen {background-color: #054511 !important;}
