@@ -176,6 +176,7 @@
 				<p class="h1 listTitleText"></p>
 				<a href="#addItemPage" data-icon="plus" class="navButton">&nbsp;</a>
 				<a href="#listOfLists" data-icon="back" class="navButton">&nbsp;</a>
+				<a href="#listOfLists" data-icon="delete" class="deleteList navButton">&nbsp;</a>
 			</div>
 			<div class="list">
 				<!-- -->
@@ -416,6 +417,17 @@
 			clearAddListInput();
 		}
 
+		function deleteList() {
+			var list = mb.glob.curList;
+			for (i=0; i < list.len(); ++i) {
+				splice(i,1);
+			}
+			mb.glob.lists.removeList(mb.glob.lists, list.getName());
+
+			updateGroceryLists();
+			clearEditItemInputs();
+		};
+
 		// Item adding functionality
 		function addItem() {
 			var item = new Object();
@@ -455,13 +467,15 @@
 			clearEditItemInputs();
 		}
 
-		/*function deleteItem() {
+		function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
 			mb.glob.curList.removeItem(mb.glob.curList, item.getName());
 
 			updateGroceryListItems();
 			clearEditItemInputs();
-		};*/
+		};
+
+
 		// Set click events
 
 		function login() {
@@ -489,6 +503,8 @@
 		$('.submitEdit').click(doEditItem);
 		$('.logIn').click(login);
 		$('.register').click(register);
+		$('.deleteItem').click(deleteItem);
+		$('.deleteList').click(deleteList);
 
 		// Update the view
 		update();
