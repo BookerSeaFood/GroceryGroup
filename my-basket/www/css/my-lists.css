@@ -21,6 +21,10 @@
 	z-index: 2;
 }
 
+.smallHeader {
+	height: 7.5vh !important;
+}
+
 .h1 {
 	font-size: 9vw;
 	position: relative;
@@ -74,6 +78,17 @@
 	display: block;
 	text-align:center;
 	font-size: 8vh;
+}
+
+.profile-picture {
+	width: 50vw;
+	height: 50vw;
+	margin: 2vh auto;
+	display: block;
+}
+
+.label {
+	font-size: 3vh;
 }
 
 .green {background-color: #0be699 !important;}
