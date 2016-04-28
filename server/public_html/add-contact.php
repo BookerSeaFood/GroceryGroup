@@ -22,6 +22,8 @@ if (input::exists()){
             //database actions
 			$toAdd = -1;
 
+			$toAdd = $db->get()
+
 			$contacts = $user->data()->contacts;
 			$contacts .= ',' . $toAdd;
 			$user->update(array(

@@ -1,48 +1,98 @@
 * {
 	font-family: 'Raleway', sans-serif !important;
 	text-shadow: 0 0 0 #eee !important;
+
+	border: none;
+	margin: 0;
+	padding: 0;
+
+	max-width: calc(900vh / 9 + 5vh)
 }
 
-.green {background-color: #0be699 !important;}
-.lightGreen{background-color: #87f69b !important;}
-.darkGreen {background-color: #054511 !important;}
-.red {background-color: #e60b58 !important;}
-.orange {text-align: center !important;
-    background-color: #ffc871 !important;}
-.darkOrange {background-color: #f5712f !important;}
-.blue {background-color: #25a2f5 !important;}
-.purple {background-color: #ac43e8 !important;}
-
-
-
-.listTitle, .listlistTitle {
-	text-align: center;
-	background-color: #ffc871 !important;
-	font-size: 1.75em !important;
+.ui-page {
+	/*width: calc(900vh / 16) !important;*/
+	height: 100% !important;
 }
 
-.list {
-	background-color: #87f69b;
+.ui-header {
+	background-color: #0be699 !important;
+	text-align: center !important;
+	height: 15vh;
+	z-index: 2;
+}
+
+.h1 {
+	font-size: 9vw;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.logo {
+	width: 100vw;
+	height: 100vw;
+
+	position: absolute;
+	top: 50%;
+	transform: translateY(-57%);
+}
+
+.button-wrapper {
+	position: fixed !important;
+	bottom: 1vh;
 	width: 100%;
-	display: inline-block;
+}
+
+.button {
+	height: 10vh;
+	margin: 1vh 0;
+}
+
+.navButton {
+	position: absolute;
+	height: 7.5vh;
+	padding: 0 3.25vh !important;
+	top: 50%;
+	transform: translateY(-50%);
+	background-color: #87f69b !important;
+	width: 0vh;
+}
+
+.ui-input-text {
+	width: 90% !important;
+	display: block;
+	margin: 0 auto;
+	margin-top: 1vh;
+}
+
+.ui-input-text, .input {
+	height: 7.4vh;
 }
 
 .listItem, .itemList {
 	margin: 0 auto;
 	display: block;
 	text-align:center;
-	font-size: 1.75em;
+	font-size: 8vh;
 }
 
+.green {background-color: #0be699 !important;}
+.lightGreen{background-color: #87f69b !important;}
+.darkGreen {background-color: #054511 !important;}
+.red {background-color: #e60b58 !important;}
+.orange {background-color: #ffc871 !important;}
+.darkOrange {background-color: #f5712f !important;}
+.blue {background-color: #25a2f5 !important;}
+.purple {background-color: #ac43e8 !important;}
+
 .oddListItem {
-	background-color: #87f69b;
+	background-color: #eee;
 }
 
 .evenListItem {
-	background-color: #53d86b;
+	background-color: #fff;
 }
 
 a:link {
-	color: #f2b34f;
 	text-decoration: none;
 }

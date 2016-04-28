@@ -24,12 +24,10 @@
 		<script src="js/classes/listlist.js"></script>
 		<script src="js/register.js"></script>
 		<script>
-
 			mb.register("test", "password", "test@example.com");
-
 		</script>
 
-		
+
 
 		<!-- Initialize all namespaces and global variables -->
 		<script>
@@ -67,31 +65,21 @@
             except ListofList and StartPage
     -->
 
-	<body>
-<<<<<<< HEAD
-=======
-
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
+	<body><div id="wrapper">
         <!--Start Page: first pge to show up if not logged on
        *display app name and logo
        *option to log in
        *option to register
       -->
         <div data-role="page" id="startPage">
-            <div class="green" data-role="header">
-                <h1>Welcome To MyBasket</h1>
+            <div data-role="header">
+                <p class="h1">Welcome To MyBasket<p>
             </div>
-<<<<<<< HEAD
-            <a href="#logInPage"><button>Log In</button></a>
-            <a href="#registerPage"><button>Register</button></a>
-=======
-            <div style="text-align : center;">
-                <img src="logo.png" />
-            </div>
-            <a href="#logInPage" ><button style="background-color:#87f69b">Log In</button></a>
-            <a href="#registerPage"><button style="background-color:#87f69b">Register</button></a>
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
-
+            <img class="logo" src="img/logo.png" />
+			<div class="button-wrapper">
+	            <a href="#logInPage"><button class="button">Log In</button></a>
+	            <a href="#registerPage"><button class="button">Register</button></a>
+			</div>
         </div>
 
 		<!--Listof Lists (also Home page once logged in)
@@ -102,17 +90,14 @@
 		-->
 		<div data-role="page" id="listOfLists">
 			<div data-role="header" class="listlistTitle">
-				<a href="#addListsPage" data-icon="plus">Create a List</a>
-
-				<h2>Your Lists</h2>
+				<p class="h1">Your Lists</p>
+				<a href="#addListsPage" data-icon="plus" class="navButton">&nbsp;</a>
 			</div>
 			<div class="allLists">
 				<!-- -->
 			</div>
 
 		</div>
-
-
 
         <!--LogIn Page
             *display button to go back
@@ -123,24 +108,20 @@
                -else : login and direct to homepage
              -->
         <div data-role="page" id="logInPage">
-            <div dat-role="header">
-                <h2>Log In</h2>
-				<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelLogin">Cancel</a>
-            </div>
-<<<<<<< HEAD
-=======
-			
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
-            <div style="padding16px;">
-                UserName : <input class="userNameInput" type="textbox" value="" placeholder="User Name" /></input>
+            <div data-role="header">
+                <p class="h1">Log In</p>
+				<a href="#startPage" data-icon="back" class="cancelLogin navButton">&nbsp;</a>
             </div>
 
             <div style="padding16px;">
-                Passowrd : <input class="passwordInput" type="textbox" value="" placeholder="Password" /></input>
+            	<input class="input userNameInput" type="text" value="" placeholder="User Name" /></input>
             </div>
 
-            <a href="#listOfLists"><button class="logIn" id="login">Log In</button></a>
+            <div style="padding16px;">
+            	<input class="input passwordInput" type="text" value="" placeholder="Password" /></input>
+            </div>
 
+            <a href="#listOfLists"><button class="logIn button" id="login">Enter</button></a>
         </div>
 
         <!--RegisterPage
@@ -151,31 +132,25 @@
                 -if so: prompt for username or password to be changed
                 -if not: register user and direct to home page
         -->
-<<<<<<< HEAD
         <div data-role="page" id="registerPage">
-
-=======
-        <div data-role="page" id="registerPage" >
-			<div data-role="header" class="orange">
+			<div data-role="header">
 				<h2>Register</h2>
 				<a href="#startPage" style ="background-color: #fbb039" data-icon="delete" class="cancelRegister">Cancel</a>
 			</div>
-			
+
 			<div style="padding16px;">
-                User Name : <input class="registerUserName" type="textbox" value="" placeholder="User Name" /></input>
+                User Name : <input class="registerUserName" type="text" value="" placeholder="User Name" /></input>
             </div>
 
             <div style="padding16px;">
-                Password : <input class="registerPassword" type="textbox" value="" placeholder="Password" /></input>
+                Password : <input class="registerPassword" type="text" value="" placeholder="Password" /></input>
             </div>
 
 			<div style="padding16px;">
-				Email : <input class="registerEmail" type="textbox" value="" placeholder="Email" /></input>
+				Email : <input class="registerEmail" type="text" value="" placeholder="Email" /></input>
 			</div>
 
 			<a href="#listOfLists"><button style="background-color:#87f69b" class="register" id="register">Enter</button></a>
-
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
         </div>
 
 
@@ -185,13 +160,11 @@
 		-->
 		<div data-role="page" id="addListsPage">
 			<div data-role="header">
-				<h2>Add New List</h2>
-				<a href="#listOfLists" data-icon="delete" class="cancelNewList">Cancel</a>
+				<p class="h1">Add New List</p>
+				<a href="#listOfLists" data-icon="back" class="cancelNewList navButton">&nbsp;</a>
 			</div>
 
-			<div style="padding16px;">
-				Name : <input class="listNameInput" type="textbox" value="" placeholder="List Name"/></input>
-			</div>
+			<input class="listNameInput input" type="text" value="" placeholder="List Name"/></input>
 
 			<a href="#listOfLists"><button class="enterList" id="EnterList">Create List</button></a>
 		</div>
@@ -208,7 +181,9 @@
 		 -->
 		<div data-role="page" id="listPage">
 			<div data-role="header" class="listTitle">
-				<!-- -->
+				<p class="h1 listTitleText"></p>
+				<a href="#addItemPage" data-icon="plus" class="navButton">&nbsp;</a>
+				<a href="#listOfLists" data-icon="back" class="navButton">&nbsp;</a>
 			</div>
 			<div class="list">
 				<!-- -->
@@ -245,9 +220,6 @@
             *option to select contact and redirect
             to editcontact page
         -->
-<<<<<<< HEAD
-        <div data-role="page" id="ProfilePage">
-=======
         <div data-role="page" id="profilePage">
             <div data-role="header" class="orange">
                 <h1>Account</h1>
@@ -266,16 +238,11 @@
             <div data-role="header" style="background-color:#fcc977">
                 <h1>Contacts</h1>
             </div>
-            <input class="contactInput" type="textbox" value="" placeholder="New Contact" /></input>
+            <input class="contactInput" type="text" value="" placeholder="New Contact" /></input>
             <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
             <div class="contacts">
                 <!---->
              </div>
-        </div>
-
-
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
-
         </div>
 
         <!--delete profile page
@@ -310,51 +277,35 @@
 		-->
 		<div data-role="page" id="addItemPage">
 			<div data-role="header">
-				<h2>Add Item</h2>
-				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
+				<p class="h1">Add Item</p>
+				<a href="#listPage" data-icon="back" class="cancelItem navButton">&nbsp;</a>
 			</div>
 
-			<div style="padding16px;">
-				Item : <input class="nameInput" type="textbox" value="" placeholder="Item Name"/></input>
-			</div>
+			<input class="input nameInput" type="text" value="" placeholder="Item Name"/>
+			<input class="input ctInput" type="number" value="" placeholder="Quantity"/>
 
-			<div style="padding16px;">
-				Quantity : <input class="ctInput" type="number" value="" placeholder="Amount"/></input>
-			</div>
-
-			<a href="#listPage"><button class="enterItem" id="Enter">Enter Item</button></a>
+			<a href="#listPage"><button class="enterItem button" id="Enter">Enter Item</button></a>
 		</div>
 
 		<!--
 		 -->
 		<div data-role="page" id="editItemPage">
 			<div data-role="header">
-				<h2>Edit Item</h2>
-				<a href="#listPage" data-icon="delete" class="cancelItem">Cancel</a>
-
-				<!-- Parker is testing adding the remove Item-->
-				<a  href="#listPage" data-icon="delete"><button class="removeItem" id="RemoveItem">Delete</button></a>
-
-
+				<p class="h1">Edit Item</p>
+				<a href="#listPage" data-icon="back" class="cancelItem navButton">&nbsp;</a>
+				<a href="#listPage" data-icon="delete" class="deleteItem navButton">&nbsp;</a>
 			</div>
 
-			<div style="padding16px;">
-				Item : <input class="editItemName" type="textbox" value="" placeholder="Item Name"/></input>
-			</div>
-
-			<div style="padding16px;">
-				Quantity : <input class="editItemCt" type="number" value="" placeholder="Amount"/></input>
-			</div>
+			<input class="input editItemName" type="text" value="" placeholder="Item Name"/></input>
+			<input class="input editItemCt" type="number" value="" placeholder="Amount"/></input>
 
 			<a  href="#listPage"><button class="submitEdit" id="EditItem">Save</button></a>
 		</div>
-
-        <!--
-        -->
+		
         <div data-role="page" id="">
 
         </div>
-	</body>
+	</div></body>
 
 
 	<!-- Required library to build with phonegap -->
@@ -367,10 +318,8 @@
 
 		// Update the view
 		function updateGroceryListTitle() {
-			$('.listTitle').empty();
-			$('.listTitle').append('<a role="button" data-role="button" class="ui-link ui-btn-left ui-btn ui-icon-plus ui-btn-icon-left ui-shadow ui-corner-all" href="#addItemPage" data-icon="plus">Add Item</a>');
-			$('.listTitle').append('<a role="button" data-role="button" class="ui-link ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all" href="#listOfLists" data-icon="delete">Return to Lists</a>');
-			$('.listTitle').append('<h3>' + mb.glob.selectedList + '</h3>');
+			$('.listTitleText').empty();
+			$('.listTitleText').html(mb.glob.selectedList);
 		}
 
 		function updateGroceryLists() {
@@ -503,9 +452,7 @@
 			updateGroceryListItems();
 			clearEditItemInputs();
 		}
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
         //log in functionality
 		function logUserIn() {
 		    var user = new Object();
@@ -525,7 +472,6 @@
 			mb.register(newUser.username, newUser.password, newUser.email, 0);
 			clearRegsiterInput();
 		};
-=======
 
 		/*function deleteItem() {
 			var item = mb.glob.curList.get(mb.glob.curItemId);
@@ -534,9 +480,6 @@
 			updateGroceryListItems();
 			clearEditItemInputs();
 		};*/
->>>>>>> origin/master
->>>>>>> d7318887f4e0d5c5c450d15eb33ffc023445d98f
-
 		// Set click events
 		$('.enterList').click(addList);
 		$('.cancelNewList').click(clearInput);
@@ -547,20 +490,5 @@
 
 		// Update the view
 		update();
-
-		function color() {
-			return Math.floor(Math.random() * 16777215);
-		}
-
-		function disco() {
-			var els = document.getElementsByTagName("*");
-			for (var i = 0; i < els.length; i++) {
-				els[i].style.backgroundcolor = color();
-			}
-			window.setTimeout(disco, 1000);
-		}
-
-		disco();
-
 	</script>
 </html>
