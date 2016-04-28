@@ -419,7 +419,7 @@
 		function deleteList() {
 			var list = mb.glob.curList;
 			for (i=0; i < list.len(); ++i) {
-				splice(i,1);
+				list.items.splice(i,1);
 			}
 			mb.glob.lists.removeList(mb.glob.lists, list.getName());
 
