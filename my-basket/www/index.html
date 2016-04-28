@@ -325,7 +325,7 @@
 				var list = mb.glob.lists.get(i);
 				var wrap = $('<div class="listElWrap"></div>')
 				var el = $('<div class="listListItem ' + bgClass + '" id="' + list.name + '">' + mb.listToHtml(list) + '</div>');
-				var del = $('<a id="' + i + '" href="#listOfLists" class="ui-link ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all">&nbsp;</a>');
+				var del = $('<a id="' + list.name + '" href="#listOfLists" class="ui-link ui-btn-right ui-btn ui-icon-delete ui-btn-icon-left ui-shadow ui-corner-all">&nbsp;</a>');
 
 				wrap.append(el);
 				wrap.append(del);
@@ -340,7 +340,10 @@
 				});
 
 				$(del).click(function(){
-					//<INSERT DELETE HERE>
+					mb.glob.selectedList = this.id;
+					mb.glob.curList = mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
+					
+					deleteList();
 				});
 
 				odd = !odd;
@@ -523,7 +526,6 @@
 		$('.logIn').click(login);
 		$('.register').click(register);
 		$('.deleteItem').click(deleteItem);
-		$('.deleteList').click(deleteList);
 		$('.logOut').click(logout);
 
 		// Update the view
