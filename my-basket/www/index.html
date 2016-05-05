@@ -448,7 +448,8 @@
 			item.ct = $('.ctInput').val();
 			item.id = mb.glob.curList.len();
 
-			if (!item.name || !item.ct){
+			if (!item.name || !item.ct || item.ct <= 0){
+				clearAddItemInput();
 				return;
 			}
 
