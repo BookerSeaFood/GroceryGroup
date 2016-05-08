@@ -56,8 +56,10 @@
 
 			mb.glob.curItemId = -1;
 
-			mb.glob.username = "test";
-			mb.glob.email = "test@example.com";
+			mb.glob.username = '';
+			mb.glob.email = '';
+			mb.glob.password = '';
+			mb.glob.contacts = [];
 			mb.glob.profile_picture = "img/default.png";
 		</script>
 	</head>
@@ -122,7 +124,7 @@
         	<input class="input userNameInput" type="text" value="" placeholder="User Name" /></input>
         	<input class="input passwordInput" type="password" value="" placeholder="Password" /></input>
 
-            <a href="#listOfLists"><button class="logIn button" id="login">Enter</button></a>
+            <button class="logIn button" id="login">Enter</button>
         </div>
 
         <!--RegisterPage
@@ -143,7 +145,7 @@
             <input class="registerPassword" type="password" value="" placeholder="Password" /></input>
 			<input class="registerEmail" type="text" value="" placeholder="Email" /></input>
 
-			<a href="#listOfLists"><button class="button register" id="register">Enter</button></a>
+			<button class="button register" id="register">Enter</button>
         </div>
 
 
@@ -222,9 +224,8 @@
 			<img class="profile-picture" src="img/default.png" />
             <p class="username label">Username: </p>
             <p class="email label">Email: </p>
-            <!--div data-role="header" class="smallHeader">
-                <p class="h1">Contacts</p>
-            </div>
+            <a href="#contactList"> <button class="contactButton">Contacts</button></a>
+            <!--/div>
             <input class="contactInput" type="text" value="" placeholder="New Contact" /></input>
             <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
             <div class="contacts">
@@ -238,20 +239,32 @@
 
         </div>
 
-        <!--Add Contact Page
-            *option to add contact by user name or email and redirect to contact page
-            *check if username or email is in data base, display if not
+        <!--Contacts Page
+            *displays contacts of current user
         -->
-        <div data-role="page" id="addContactPage">
-
+        <div data-role="page" id="contactList">
+			<div data-role="header">
+				<p class="h1">Contacts</p>
+				<a href="#profilePage" data-icon="back" class="cancelContacts navButton">&nbsp;</a>
+				<a href="#addContactPage" data-icon="plus" class="addContact navButton">&nbsp;</a>
+			</div>
+			<div class="contacts">
+			<!-- -->
+			</div>
         </div>
 
-        <!--Edit Contact Page
-            *display contact name
-            *option to delete contact
+        <!--Add Contact Page
+            *option to add contact by user name
         -->
-        <div data-role="page" id="editContactPage">
-
+        <div data-role="page" id="addContactPage">
+			<div data-role="header">
+				<p class="h1">Add Contact</p>
+				<a href="#contactList" data-icon="back" class="cancelAddContacts navButton">&nbsp;</a>
+			</div>
+			
+			<input class="contactUsername" type="text" value="" placeholder="Username" /></input>
+			
+			<a href="#contactList"><button class="addContact">Enter</button></a>
         </div>
 
 		<!--
@@ -374,10 +387,31 @@
 			}
 		}
 
+		function updateContacts() {
+			var odd = false
+			
+			$('.contacts').empty();
+			
+			for (i = 0; i < mb.glob.contacts.length; ++i) {
+				var bgClass = 'oddListItem';
+				if(!odd) {
+					bgClass = 'evenListItem';
+				}
+				
+				var el = $('<div class="listItem ' + bgClass + '" id="' + i + '">' + mb.glob.contacts[i] + '</div>');
+				
+				
+				$('.contacts').append(el);
+				
+				odd = !odd;
+			}
+		}
+		
 		function update() {
 			updateGroceryLists();
 			updateGroceryListTitle();
 			updateGroceryListItems();
+			updateContacts();
 			mb.glob.curList.update();
 		}
 
@@ -406,6 +440,10 @@
 			$('.registerPassword').val('');
 			$('.registerEmail').val('');
 		}
+		
+		function clearContactInput() {
+			$('.contactUsername').val('');
+		}
 
 		function clearInput() {
 			clearAddListInput();
@@ -413,6 +451,7 @@
 			clearEditItemInputs();
 			clearLoginInputs();
 			clearRegistrationInputs();
+			clearContactInput();
 		}
 
 		// List adding functionality
@@ -471,7 +510,7 @@
 			item.name = $('.editItemName').val();
 			item.ct = $('.editItemCt').val();
 
-			if (!item.name || !item.ct){
+			if (!item.name || !item.ct || item.ct <= 0){
 				return;
 			}
 
@@ -494,30 +533,65 @@
 		
 		//User(login,logout,register) functionality
 		function login() {
-			mb.glob.username = $('.userNameInput').val();
-			if (mb.glob.username === '') {
-				mb.glob.username = 'test';
+			var username = $('.userNameInput').val();
+			var password = $('.passwordInput').val();
+			
+			if (!username || !password) {
+				window.location.href = '#startPage';
+				clearInput();
+				return;
 			}
+			
+			if (mb.glob.username !== username || mb.glob.password !== password) {
+				window.location.href = '#startPage';
+				clearInput();
+				return;
+			}
+			
 			$('.username').html('Username: ' + mb.glob.username);
 			$('.email').html('Email: ' + mb.glob.email);
 
 			clearInput();
+			window.location.href = '#listOfLists';
 		}
 		
 		function logout() {
-			mb.glob.username = 'test';
-			mb.glob.email = 'test@example.com';
-			
+			mb.glob.contacts = [];
+		
 			clearInput();
 		}
 
 		function register() {
-			mb.glob.username = $('.registerUserName').val();
-			mb.glob.email = $('.registerEmail').val();
+			var username = $('.registerUserName').val();
+			var password = $('.registerPassword').val();
+			var email = $('.registerEmail').val();
 
+			if (!username || !password || !email) {
+				window.location.href = '#startPage';
+				clearInput();
+				return;
+			}
+			
+			mb.glob.username = username;
+			mb.glob.password = password;
+			mb.glob.email = email;
+			
 			$('.username').html('Username: ' + mb.glob.username);
 			$('.email').html('Email: ' + mb.glob.email);
 
+			clearInput();
+			window.location.href = '#logInPage';
+		}
+		
+		function addContact() {
+			var user = $('.contactUsername').val();
+			
+			if (!user) {
+				return;
+			}
+			
+			mb.glob.contacts.push(user);
+			updateContacts();
 			clearInput();
 		}
 
@@ -530,6 +604,7 @@
 		$('.register').click(register);
 		$('.deleteItem').click(deleteItem);
 		$('.logOut').click(logout);
+		$('.addContact').click(addContact);
 
 		// Update the view
 		update();

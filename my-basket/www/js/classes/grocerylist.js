@@ -57,6 +57,14 @@ mb.GroceryList.prototype.len = function() {
 };
 
 mb.GroceryList.prototype.addItem = function(that, item) {
+	for (i=0; i < that.items.length; ++i) {
+		if (that.items[i].getName() === item.name) {
+			var num = parseInt(that.items[i].ct);
+			num += parseInt(item.ct);
+			that.items[i].ct = num;
+			return;
+		}
+	}
 	that.items.push(new mb.GroceryListItem(item));
 };
 
