@@ -1,4 +1,6 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
+//ListList: Handles storing and accessing the lists it has access to (high cohesion)
+////Each ListList accesses it's own variables, returning to others through functions (low coupling)
 
 //Constructor with given ID
 mb.ListList = function(id) {
@@ -29,7 +31,6 @@ mb.ListList.prototype.len = function() {
 
 mb.ListList.prototype.removeList = function(that, listName) {
 	var checksum = 0;
-	//Possible remove later, could be redundant
 	if (that._lists.length === 1) {
 		that._lists.splice(0);
 	}

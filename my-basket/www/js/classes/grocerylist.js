@@ -1,11 +1,15 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//GroceryListItem: Handles storing and accessing the item's name and quantity desired (high cohesion)
+//Each GroceryList accesses it's own variables, returning to others through functions (low coupling)
+
 mb.GroceryListItem = function(item) {
 	this.name = item.name;
 	this.ct = item.ct;
 	this.id = item.id;
 };
 
+//Function used to hide member variables from users (data encapsulation)
 mb.GroceryListItem.prototype.getName = function() {
 	return this.name;
 };
@@ -15,6 +19,9 @@ mb.listItemToHtml = function(that) {
 };
 
 ////////////////////////////////////////////////////////////////////////////////
+
+//GroceryList: Handles storing and accessing the items it has access to (high cohesion)
+//Each GroceryList accesses it's own variables, returning to others through functions (low coupling)
 
 mb.GroceryList = function(str) {
 	this.items = [];
@@ -48,6 +55,7 @@ mb.GroceryList.prototype.edit = function(that, i, item){
 	that.items[i].ct = item.ct;
 };
 
+//Functions used to hide member variables from users (data encapsulation)
 mb.GroceryList.prototype.getName = function() {
 	return this.name;
 };
@@ -56,6 +64,8 @@ mb.GroceryList.prototype.len = function() {
 	return this.items.length;
 };
 
+
+//Functions for removing and adding items
 mb.GroceryList.prototype.addItem = function(that, item) {
 	for (i=0; i < that.items.length; ++i) {
 		if (that.items[i].getName() === item.name) {
@@ -70,7 +80,6 @@ mb.GroceryList.prototype.addItem = function(that, item) {
 
 mb.GroceryList.prototype.removeItem = function(that, itemName) {
 	var checksum = 0;
-	//Possible remove later, could be redundant
 	if (that.items.length === 1) {
 		that.items.splice(0);
 	}

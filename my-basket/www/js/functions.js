@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != "object") { var mb = new Object(); }
 
+//General functions designed to be used by all functions
+
 /**
  * @return {string} Today's date in mm/dd/yyyy format
  */

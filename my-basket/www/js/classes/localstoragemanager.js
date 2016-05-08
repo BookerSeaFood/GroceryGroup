@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Mock storage used to test storage between sessions
+
 mb.FakeStorage = function() {
 	this._data: new Object();
 };

@@ -1,6 +1,8 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
-mb.SERVER = '127.0.0.1/my-basket/'; // TODO: buy a server
+mb.SERVER = '127.0.0.1/my-basket/';
+
+//User class designed to keep track of a user's info and lists
 
 /** @constructor */
 mb.User = function() {

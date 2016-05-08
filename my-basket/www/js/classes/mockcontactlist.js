@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+
+//Mock version of a contact and contact list used initially for testing
 mb.MockContact = function(con) {
 	this.username = con.username;
 	this.uid = con.uid;

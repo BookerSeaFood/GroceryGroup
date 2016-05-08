@@ -45,15 +45,10 @@
 				$.mobile.pushStateEnabled = false;
 			});
 
-			// Need to implement a lot here
 			mb.glob.lists = new mb.ListList();
-			//mb.glob.lists.add(new mb.GroceryList("Mock List"));
-			//mb.glob.lists.add(new mb.GroceryList("Mock List 2"));
 			mb.glob.selectedList = "";
 
-			mb.glob.curList = null;//mb.ListList.listByName(mb.glob.lists, mb.glob.selectedList);
-			//mb.glob.curList.load(mb.glob.selectedList);
-
+			mb.glob.curList = null;
 			mb.glob.curItemId = -1;
 
 			mb.glob.username = '';
@@ -64,19 +59,19 @@
 		</script>
 	</head>
 
-    <!--
-       Data role for all APP pages:
+    <!--Data role for all app pages:
         *all pages should contain title of page and a home button (icon or app title)
-        *all pages off should have opton to return to previous page
+        *all pages should have option to return to previous page
             except ListofList and StartPage
     -->
 
 	<body><div id="wrapper">
-        <!--Start Page: first pge to show up if not logged on
-       *display app name and logo
-       *option to log in
-       *option to register
-      -->
+		<!--Start Page: 
+			*first page to show up
+			*display app name and logo
+			*option to log in
+			*option to register
+		-->
         <div data-role="page" id="startPage">
             <div data-role="header">
                 <p class="h1">Welcome To MyBasket<p>
@@ -88,7 +83,7 @@
 			</div>
         </div>
 
-		<!--Listof Lists (also Home page once logged in)
+		<!--List of Lists:
             *display all the users lists
             *option to access profilePage
             *option to create list
@@ -107,7 +102,7 @@
 
 		</div>
 
-        <!--LogIn Page
+        <!--Login Page:
             *display button to go back
             *prompt for username, password, and email
              *display login button
@@ -127,7 +122,7 @@
             <button class="logIn button" id="login">Enter</button>
         </div>
 
-        <!--RegisterPage
+        <!--RegisterPage:
             *display button to go back
             *prompt for username and password
 			*display register button
@@ -149,9 +144,9 @@
         </div>
 
 
-		<!--Add List Page
+		<!--Add List Page:
             *option to cancel
-            *option to add list and reroute to the ViewListpage for the new list
+            *option to add list and reroute to the View List page for the new list
 		-->
 		<div data-role="page" id="addListsPage">
 			<div data-role="header">
@@ -164,15 +159,13 @@
 			<a href="#listOfLists"><button class="enterList" id="EnterList">Create List</button></a>
 		</div>
 
-		<!--
-		View List
+		<!--View List:
 			*display list name
 			*display items in list
 			*option to add item and reroute to add item page
-            *option to edit items by clickign them and rerouting to
+            *option to edit items by clicking them and re-routing to
                 edit item page
-            *option to return to ListofLists
-            *might: option to checkoff*delete) item without accessing edit item
+            *option to return to list of lists
 		 -->
 		<div data-role="page" id="listPage">
 			<div data-role="header" class="listTitle">
@@ -185,18 +178,9 @@
 			</div>
 		</div>
 
-        <!--LeaveListPage
-            *check if other users have access to this page
-            *if only Use: option to delete list and redirect to listof lists
-            *if other user: option to leave list and redirect to listofLists
-        -->
-        <div data-role="page" id="leaveListPage">
-
-        </div>
-
-        <!--ShareListPage
-            *option to go back to listpage
-            *option to add user to list and redirect back to listpage
+        <!--Share List Page:
+            *option to go back to list page
+            *option to add user to list and redirect back to list page
             *display if user is already added to the list
                 or user isn't in database
         -->
@@ -204,16 +188,11 @@
 
         </div>
 
-        <!--
-        Profile Page(also contains contacts)
-            *option to log off and redirect to start page
-            *option to go back to listoflists
-            *display profile name and email
-            *display contacts
-            *option to edit password
-            *option to add contact
-            *option to select contact and redirect
-            to editcontact page
+        <!--Profile Page:
+				*option to log off and redirect to start page
+				*option to go back to list of lists
+				*display profile name and email
+				*option to show contacts page
         -->
         <div data-role="page" id="profilePage">
             <div data-role="header">
@@ -225,22 +204,12 @@
             <p class="username label">Username: </p>
             <p class="email label">Email: </p>
             <a href="#contactList"> <button class="contactButton">Contacts</button></a>
-            <!--/div>
-            <input class="contactInput" type="text" value="" placeholder="New Contact" /></input>
-            <a href="#profilePage"><button style="background:#87f69b">Add</button></a>
-            <div class="contacts">
-            </div-->
-        </div>
-
-        <!--delete profile page
-            *option to delete profile and redirect to startPage
-        -->
-        <div data-role="page" id="deleteProfilePage">
-
         </div>
 
         <!--Contacts Page
             *displays contacts of current user
+			*option to go back to profile page
+			*option to add new contact
         -->
         <div data-role="page" id="contactList">
 			<div data-role="header">
@@ -253,8 +222,9 @@
 			</div>
         </div>
 
-        <!--Add Contact Page
-            *option to add contact by user name
+        <!--Add Contact Page:
+			*option to go back to contacts page
+            *option to add contact by username
         -->
         <div data-role="page" id="addContactPage">
 			<div data-role="header">
@@ -267,11 +237,10 @@
 			<a href="#contactList"><button class="addContact">Enter</button></a>
         </div>
 
-		<!--
-		Add item Page:
+		<!--Add Item Page:
 			*enter name and number for item and adds item to list
 			*return to view list page
-			*select cancel: return to listPage
+			*option to return to list page
 		-->
 		<div data-role="page" id="addItemPage">
 			<div data-role="header">
@@ -284,8 +253,8 @@
 
 			<a href="#listPage"><button class="enterItem button" id="Enter">Enter Item</button></a>
 		</div>
-		<!--
-			Edit item page:
+		
+		<!--Edit Item page:
 				*gives fields to edit item name and amount
 				*return to view list page
 				*Option to remove item from list
@@ -315,9 +284,9 @@
 
 	<!-- Controllers -->
 	<script type="text/javascript">
-		// Still need a lot to be implemented for this to work, but this is
-		//  the basic idea
-
+		//Polymorphism was not really used in our JavaScript code, as JavaScript does not inherently support it, even though
+		//it was initially planned to be used in our documentation. It was used, however, in our CSS.
+	
 		// Update the view
 		function updateGroceryListTitle() {
 			$('.listTitleText').empty();
@@ -584,6 +553,7 @@
 			window.location.href = '#logInPage';
 		}
 		
+		//Adding contacts functionality
 		function addContact() {
 			var user = $('.contactUsername').val();
 			
@@ -596,6 +566,7 @@
 			clearInput();
 		}
 
+		//Functions to run when certain buttons are pressed
 		$('.enterList').click(addList);
 		$('.cancelNewList').click(clearInput);
 		$('.enterItem').click(addItem);

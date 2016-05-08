@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Database interface designed to interface between the database and the app
+
 /** @constructor */
 mb.DatabaseInterface = function(jq, server) {
 	this.jq = jq;

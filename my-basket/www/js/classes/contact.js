@@ -2,6 +2,8 @@ if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
 mb.SERVER = '127.0.0.1/my-basket/';
 
+//Contact class used to store contact name and functions
+
 /**@constructor*/
 mb.Contact = function(un, id) {
 	//Database ID

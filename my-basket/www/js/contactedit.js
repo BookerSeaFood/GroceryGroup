@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Functions to add and remove contacts from a contact list
+
 /**
   * Get the user's profile info from the db and create a contact
   * @param {string} username The user's username

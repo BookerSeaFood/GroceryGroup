@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Mock grocery list and grocery list items used for app testing
+
 mb.MockGroceryListItem = function(item) {
 	this.name = item.name;
 	this.ct = item.ct;

@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Mock version of a database used in testing to return known values
+
 mb.MockDatabase = function() {};
 
 mb.MockDatabase.prototype.insert(table, fields) {

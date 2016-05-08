@@ -1,5 +1,7 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Contact list class designed to hold contacts and provide functions to display them and contact information
+
 mb.ContactList = function() {
 	this.contacts = [];
 };

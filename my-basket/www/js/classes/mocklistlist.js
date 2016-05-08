@@ -1,5 +1,6 @@
 if (mb == null || typeof(mb) != 'object') { var mb = new Object(); }
 
+//Mock list of lists used in initial testing
 mb.MockListList = function(id) {
 	this._lists = [];
 	this.id = id;
