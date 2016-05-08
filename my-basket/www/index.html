@@ -121,7 +121,7 @@
 				<a href="#startPage" data-icon="back" class="cancelLogin navButton">&nbsp;</a>
             </div>
 
-        	<input class="input userNameInput" type="text" value="" placeholder="User Name" /></input>
+        	<input class="input userNameInput" type="text" value="" placeholder="Username" /></input>
         	<input class="input passwordInput" type="password" value="" placeholder="Password" /></input>
 
             <button class="logIn button" id="login">Enter</button>
@@ -141,7 +141,7 @@
 				<a href="#startPage" data-icon="back" class="cancelRegister navButton">&nbsp;</a>
 			</div>
 
-        	<input class="registerUserName" type="text" value="" placeholder="User Name" /></input>
+        	<input class="registerUserName" type="text" value="" placeholder="Username" /></input>
             <input class="registerPassword" type="password" value="" placeholder="Password" /></input>
 			<input class="registerEmail" type="text" value="" placeholder="Email" /></input>
 
@@ -557,6 +557,7 @@
 		
 		function logout() {
 			mb.glob.contacts = [];
+			updateContacts();
 		
 			clearInput();
 		}
